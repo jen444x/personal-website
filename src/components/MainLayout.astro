@@ -1,0 +1,29 @@
+---
+import Head from "./Head.astro";
+
+// Define what this layout expects to receive
+export interface Props {
+  title: string;
+  description: string;
+}
+
+// Extract the props
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Use our Head component and pass it the title and description -->
+    <Head title={title} description={description} />
+  </head>
+  <body>
+    <!-- This is where the page content will go -->
+    <!-- <slot /> is like a placeholder that gets replaced with the actual page content -->
+    <slot />
+  </body>
+</html>
