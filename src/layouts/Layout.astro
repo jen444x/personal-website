@@ -1,5 +1,6 @@
 ---
-import Head from "./Head.astro";
+import "../styles/global.css";
+import Head from "../components/Head.astro";
 
 // Define what this layout expects to receive
 export interface Props {
@@ -21,7 +22,12 @@ const { title, description } = Astro.props;
     <!-- Use our Head component and pass it the title and description -->
     <Head title={title} description={description} />
   </head>
-  <body>
+  <body class="bg-gray-900 text-white">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Posts</a>
+      <a href="#">Contact</a>
+    </nav>
     <!-- This is where the page content will go -->
     <!-- <slot /> is like a placeholder that gets replaced with the actual page content -->
     <slot />

@@ -1,13 +1,9 @@
 ---
-import MainLayout from '../components/MainLayout.astro';
+import MainLayout from "../layouts/Layout.astro";
+import Intro from "../components/Intro.astro";
 ---
 
 <!-- Use the layout and pass it the page-specific information -->
-<MainLayout 
-  title="Jennifer Miranda - Web Developer"
-  description="Welcome to my portfolio website"
->
-  <!-- This content gets inserted where <slot /> is in the layout -->
-  <h1>Welcome to My Website!</h1>
-  <p>I'm a web developer who loves creating amazing things.</p>
+<MainLayout title="Jen" description="Welcome to my portfolio website">
+  <Intro />
 </MainLayout>

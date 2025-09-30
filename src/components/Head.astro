@@ -1,13 +1,13 @@
 ---
 // Wwhat information this component needs from other files
 export interface Props {
-  title: string;        // The page title (required)
-  description: string;  // The page description (required)
+  title: string; // The page title (required)
+  description: string; // The page description (required)
 }
 // Extract the props that were passed to this component
-const { 
-  title = "My Astro Website",        // ← Default if no title passed
-  description = "Welcome to my website"  // ← Default if no description passed
+const {
+  title = "My Astro Website", // ← Default if no title passed
+  description = "Welcome to my website", // ← Default if no description passed
 } = Astro.props;
 
 // Astro.site comes from your config file
@@ -15,16 +15,17 @@ const {
 // Combine them to make the full URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
+
 <!-- Basic SEO -->
 <title>{title}</title>
-<meta name="description" content={description}>
-<link rel="canonical" href={canonicalURL}>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
 
 <!-- Open Graph tags (for social media previews-->
-<meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
-<meta property="og:type" content="website">
-<meta property="og:url" content={canonicalURL}>
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
 
 <!-- Favicon -->
-<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.ico" />
