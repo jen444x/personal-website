@@ -1,0 +1,49 @@
+---
+// Skills Section
+const skillCategories = [
+  {
+    category: "Languages",
+    skills: ["Python", "JavaScript", "C++", "PHP", "HTML/CSS", "SQL"]
+  },
+  {
+    category: "Frameworks & Libraries",
+    skills: ["React", "Flask", "Node.js", "Express.js", "Astro", "TensorFlow", "Keras"]
+  },
+  {
+    category: "Data & ML",
+    skills: ["Machine Learning", "Neural Networks", "Bayesian Networks", "Data Visualization", "Jupyter"]
+  },
+  {
+    category: "Tools & Technologies",
+    skills: ["Git", "PostgreSQL", "MongoDB", "MariaDB", "Selenium", "BeautifulSoup", "pytest", "Digital Ocean"]
+  }
+];
+---
+
+<section id="skills" class="py-20 bg-zinc-950">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+      Skills
+    </h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+      Technologies and tools I use to build impactful solutions.
+    </p>
+    <div class="grid md:grid-cols-2 gap-8">
+      {skillCategories.map((category) => (
+        <div class="bg-zinc-900 rounded-xl p-8 border border-zinc-800 shadow-sm">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+            <span class="w-2 h-8 bg-violet-500 rounded mr-3"></span>
+            {category.category}
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            {category.skills.map((skill) => (
+              <span class="px-4 py-2 bg-zinc-800 text-gray-200 rounded-lg text-sm font-medium hover:bg-violet-600 hover:text-white transition-colors border border-zinc-700">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

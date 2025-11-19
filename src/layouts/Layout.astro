@@ -19,15 +19,15 @@ const { title, description } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
     <!-- Use our Head component and pass it the title and description -->
     <Head title={title} description={description} />
   </head>
-  <body class="bg-gray-900 text-white">
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Posts</a>
-      <a href="#">Contact</a>
-    </nav>
+  <body>
     <!-- This is where the page content will go -->
     <!-- <slot /> is like a placeholder that gets replaced with the actual page content -->
     <slot />

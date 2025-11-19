@@ -1,0 +1,89 @@
+---
+// Projects Section
+const projects = [
+  {
+    title: "Job Alert Automation",
+    description: "Real-time notification service that monitors job postings and delivers instant alerts for new opportunities. Features intelligent duplicate detection and configurable monitoring intervals. Deployed on Digital Ocean with 24/7 uptime.",
+    tags: ["Python", "Selenium", "BeautifulSoup", "Pushover API"],
+    github: "https://github.com/jen444x/job-alert-automation"
+  },
+  {
+    title: "PlayPals",
+    description: "Full-stack social application for pet owners featuring real-time chat, social feeds, and calendar integration. Enables pet owners to connect and coordinate playdates.",
+    tags: ["JavaScript", "Node.js", "React", "MongoDB"],
+    github: "https://github.com/jen444x/PlayPals"
+  },
+  {
+    title: "Rocky Concrete Inc. Website",
+    description: "Responsive, client-facing business website for concrete and landscaping services. Conducted requirement gathering and maintained iterative feedback loops with client. Deployed to production with focus on performance, SEO, and cross-browser compatibility.",
+    tags: ["Astro", "Responsive Design", "SEO", "Client Work"],
+    github: "https://github.com/jen444x/jen444x.github.io",
+    liveUrl: "https://jen444x.github.io"
+  },
+  {
+    title: "Bayesian Network Asthma Classifier",
+    description: "Iterative Bayesian Network expert system for asthma prediction using patient health data. Implements probabilistic reasoning for medical diagnosis support.",
+    tags: ["Python", "Bayesian Networks", "Machine Learning"],
+    github: "https://github.com/jen444x/Bayesian-Network-Asthma-Classifier"
+  },
+  {
+    title: "Plant Page",
+    description: "Web application with complete user lifecycle management. Implements secure role-based authentication and authorization with user/admin roles. Features automated notification system for scheduled maintenance tasks.",
+    tags: ["PHP", "MariaDB", "Authentication", "Role-Based Access"],
+    github: "https://github.com/jen444x/plant-page"
+  },
+  {
+    title: "Habit Tracker",
+    description: "Command-line and web-based habit tracking application with data visualization and time-series analysis. Features persistent JSON storage and Flask web interface. Part of a progressive learning series.",
+    tags: ["Python", "Flask", "HTML/CSS", "Data Visualization"],
+    github: "https://github.com/jen444x/Habit-Tracker"
+  }
+];
+---
+
+<section id="projects" class="py-20 bg-zinc-900">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 text-center">
+      Projects
+    </h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+      A showcase of my work in automation, full-stack development, client projects, and machine learning.
+    </p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => (
+        <div class="bg-zinc-800 rounded-xl p-6 border border-zinc-700 hover:shadow-lg hover:shadow-violet-500/20 hover:border-violet-500/50 transition-all">
+          <div class="flex justify-between items-start mb-4">
+            <div class="text-violet-400">
+              <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 12H5c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v8c0 .55-.45 1-1 1z"></path>
+              </svg>
+            </div>
+            <div class="flex gap-3">
+              <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"></path>
+                </svg>
+              </a>
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"></path>
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">{project.title}</h3>
+          <p class="text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
+          <div class="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span class="px-3 py-1 bg-zinc-900 text-violet-400 rounded-full text-xs font-medium border border-zinc-700">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
