@@ -5,7 +5,8 @@ const projects = [
     title: "Job Alert Automation",
     description: "Real-time notification service that monitors job postings and delivers instant alerts for new opportunities. Features intelligent duplicate detection and configurable monitoring intervals. Deployed on Digital Ocean with 24/7 uptime.",
     tags: ["Python", "Selenium", "BeautifulSoup", "Pushover API"],
-    github: "https://github.com/jen444x/job-alert-automation"
+    github: "https://github.com/jen444x/job-alert-automation",
+    detailUrl: "/projects/job-alert-automation"
   },
   {
     title: "PlayPals",
@@ -73,8 +74,22 @@ const projects = [
               )}
             </div>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">{project.title}</h3>
+          {project.detailUrl ? (
+            <a href={project.detailUrl} class="text-xl font-bold text-white mb-3 block hover:text-violet-400 transition-colors">
+              {project.title}
+            </a>
+          ) : (
+            <h3 class="text-xl font-bold text-white mb-3">{project.title}</h3>
+          )}
           <p class="text-gray-300 mb-4 text-sm leading-relaxed">{project.description}</p>
+          {project.detailUrl && (
+            <a href={project.detailUrl} class="text-violet-400 hover:text-violet-300 text-sm inline-flex items-center gap-1 mb-4 transition-colors">
+              Read the full story
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          )}
           <div class="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span class="px-3 py-1 bg-zinc-900 text-violet-400 rounded-full text-xs font-medium border border-zinc-700">
