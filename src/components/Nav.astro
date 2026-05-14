@@ -2,45 +2,109 @@
 // Navigation Bar
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-sm border-b border-zinc-800">
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-sm border-b border-zinc-800"
+>
   <div class="max-w-7xl mx-auto px-6 py-4">
     <div class="flex justify-between items-center">
       <!-- Left: Name -->
-      <a href="#" class="text-xl font-bold text-white hover:text-violet-400 transition-colors">
+      <a
+        href="/"
+        class="text-xl font-bold text-white hover:text-violet-400 transition-colors"
+      >
         Jennifer Miranda
       </a>
 
       <!-- Center: Navigation Links (Desktop) -->
       <div class="hidden md:flex gap-8">
-        <a href="#about" class="text-gray-300 hover:text-violet-400 transition-colors">About</a>
-        <a href="#projects" class="text-gray-300 hover:text-violet-400 transition-colors">Projects</a>
-        <a href="#skills" class="text-gray-300 hover:text-violet-400 transition-colors">Skills</a>
-        <a href="#contact" class="text-gray-300 hover:text-violet-400 transition-colors">Contact</a>
+        <a
+          href="/#about"
+          class="text-gray-300 hover:text-violet-400 transition-colors">About</a
+        >
+        <a
+          href="/#projects"
+          class="text-gray-300 hover:text-violet-400 transition-colors"
+          >Projects</a
+        >
+        <a
+          href="/#skills"
+          class="text-gray-300 hover:text-violet-400 transition-colors"
+          >Skills</a
+        >
+        <a
+          href="/#contact"
+          class="text-gray-300 hover:text-violet-400 transition-colors"
+          >Contact</a
+        >
       </div>
 
       <!-- Right: Social Links (Desktop) -->
       <div class="hidden md:flex gap-4 items-center">
-        <a href="mailto:miranda.jennifer0407@gmail.com" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors" aria-label="Email">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        <a
+          href="mailto:miranda.jennifer0407@gmail.com"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-violet-400 transition-colors"
+          aria-label="Email"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            ></path>
           </svg>
         </a>
-        <a href="https://www.linkedin.com/in/jennifer-miranda47" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors" aria-label="LinkedIn">
+        <a
+          href="https://www.linkedin.com/in/jennifer-miranda47"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-violet-400 transition-colors"
+          aria-label="LinkedIn"
+        >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            ></path>
           </svg>
         </a>
-        <a href="https://github.com/jen444x" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors" aria-label="GitHub">
+        <a
+          href="https://github.com/jen444x"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-gray-400 hover:text-violet-400 transition-colors"
+          aria-label="GitHub"
+        >
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"></path>
+            <path
+              d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"
+            ></path>
           </svg>
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-button" class="md:hidden text-gray-400 hover:text-violet-400 transition-colors" aria-label="Toggle menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      <button
+        id="mobile-menu-button"
+        class="md:hidden text-gray-400 hover:text-violet-400 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
@@ -48,27 +112,78 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
       <div class="flex flex-col space-y-3">
-        <a href="#about" class="text-gray-300 hover:text-violet-400 transition-colors py-2">About</a>
-        <a href="#projects" class="text-gray-300 hover:text-violet-400 transition-colors py-2">Projects</a>
-        <a href="#skills" class="text-gray-300 hover:text-violet-400 transition-colors py-2">Skills</a>
-        <a href="#contact" class="text-gray-300 hover:text-violet-400 transition-colors py-2">Contact</a>
+        <a
+          href="/#about"
+          class="text-gray-300 hover:text-violet-400 transition-colors py-2"
+          >About</a
+        >
+        <a
+          href="/#projects"
+          class="text-gray-300 hover:text-violet-400 transition-colors py-2"
+          >Projects</a
+        >
+        <a
+          href="/#skills"
+          class="text-gray-300 hover:text-violet-400 transition-colors py-2"
+          >Skills</a
+        >
+        <a
+          href="/#contact"
+          class="text-gray-300 hover:text-violet-400 transition-colors py-2"
+          >Contact</a
+        >
         <div class="flex gap-4 pt-2 border-t border-zinc-800">
-          <a href="/Resume_Jennifer_Miranda.pdf" class="text-gray-400 hover:text-violet-400 transition-colors" aria-label="Resume">
+          <a
+            href="/Resume_Jennifer_Miranda.pdf"
+            class="text-gray-400 hover:text-violet-400 transition-colors"
+            aria-label="Resume"
+          >
             <img src="/web 6/icons8-resume-60.png" alt="" class="w-5 h-5" />
           </a>
-          <a href="mailto:miranda.jennifer0407@gmail.com" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors" aria-label="Email">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+          <a
+            href="mailto:miranda.jennifer0407@gmail.com"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-violet-400 transition-colors"
+            aria-label="Email"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              ></path>
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/jennifer-miranda47" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/jennifer-miranda47"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-violet-400 transition-colors"
+            aria-label="LinkedIn"
+          >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              ></path>
             </svg>
           </a>
-          <a href="https://github.com/jen444x" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-violet-400 transition-colors" aria-label="GitHub">
+          <a
+            href="https://github.com/jen444x"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-400 hover:text-violet-400 transition-colors"
+            aria-label="GitHub"
+          >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"></path>
+              <path
+                d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"
+              ></path>
             </svg>
           </a>
         </div>
@@ -85,32 +200,32 @@
 
 <script>
   // Mobile menu toggle
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  mobileMenuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
   });
 
   // Close mobile menu when clicking a link
-  const mobileLinks = mobileMenu?.querySelectorAll('a');
-  mobileLinks?.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
+  const mobileLinks = mobileMenu?.querySelectorAll("a");
+  mobileLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
     });
   });
 
   // Smooth scroll behavior
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
       e.preventDefault();
-      const href = anchor.getAttribute('href');
+      const href = anchor.getAttribute("href");
       if (href) {
         const target = document.querySelector(href);
         if (target) {
           target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+            behavior: "smooth",
+            block: "start",
           });
         }
       }

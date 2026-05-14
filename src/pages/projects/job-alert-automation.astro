@@ -221,9 +221,9 @@ const tags = ["Python", "Selenium", "BeautifulSoup", "Pushover API"];
         </div>
       </section>
 
-      <!-- How It Works - Visual Flow -->
+      <!-- How It Works -->
       <section class="mb-20">
-        <div class="flex items-center gap-3 mb-8">
+        <div class="flex items-center gap-3 mb-6">
           <div
             class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center"
           >
@@ -237,130 +237,141 @@ const tags = ["Python", "Selenium", "BeautifulSoup", "Pushover API"];
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                d="M13 5l7 7-7 7M5 5l7 7-7 7"
               ></path>
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
             </svg>
           </div>
           <h2 class="text-2xl font-bold text-gray-900">How It Works</h2>
         </div>
 
-        <div class="relative">
-          <!-- Connection line -->
-          <div
-            class="hidden md:block absolute left-1/2 top-12 bottom-12 w-px bg-gradient-to-b from-violet-400 via-violet-200 to-transparent"
-          >
+        <!-- Desktop: horizontal row -->
+        <div class="hidden md:grid md:grid-cols-4 gap-4 relative">
+          <!-- Connecting line behind cards -->
+          <div class="absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-violet-300 via-violet-400 to-violet-300 z-0"></div>
+
+          <!-- Step 1 -->
+          <div class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+            <span class="text-violet-500 text-xs font-semibold tracking-wide">01</span>
+            <h3 class="text-gray-900 font-semibold mt-1 mb-2">Login</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Selenium handles browser automation, logging into the portal and navigating to postings.</p>
           </div>
 
-          <div class="space-y-6">
-            <!-- Step 1 -->
-            <div class="relative flex items-start gap-6">
-              <div class="flex-1 text-right hidden md:block">
-                <div
-                  class="inline-block bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <h3 class="text-gray-900 font-semibold mb-2">Automated Login</h3>
-                  <p class="text-gray-500 text-sm">
-                    Selenium handles browser automation, logging into the portal
-                    and navigating to postings.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="relative z-10 w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-violet-300"
-              >
-                1
-              </div>
-              <div class="flex-1 md:hidden">
-                <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 class="text-gray-900 font-semibold mb-2">Automated Login</h3>
-                  <p class="text-gray-500 text-sm">
-                    Selenium handles browser automation, logging into the portal
-                    and navigating to postings.
-                  </p>
-                </div>
-              </div>
-              <div class="flex-1 hidden md:block"></div>
-            </div>
+          <!-- Step 2 -->
+          <div class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+            <span class="text-violet-500 text-xs font-semibold tracking-wide">02</span>
+            <h3 class="text-gray-900 font-semibold mt-1 mb-2">Scrape</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">BeautifulSoup extracts job details. Duplicate detection ensures we only process new postings.</p>
+          </div>
 
-            <!-- Step 2 -->
-            <div class="relative flex items-start gap-6">
-              <div class="flex-1 hidden md:block"></div>
-              <div
-                class="relative z-10 w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-violet-300"
-              >
-                2
-              </div>
-              <div class="flex-1">
-                <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 class="text-gray-900 font-semibold mb-2">Scrape & Parse</h3>
-                  <p class="text-gray-500 text-sm">
-                    BeautifulSoup extracts job details. Duplicate detection
-                    ensures we only process new postings.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <!-- Step 3 -->
+          <div class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+            <span class="text-violet-500 text-xs font-semibold tracking-wide">03</span>
+            <h3 class="text-gray-900 font-semibold mt-1 mb-2">Accept</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">When a matching job appears, the bot clicks through and accepts it automatically.</p>
+          </div>
 
-            <!-- Step 3 -->
-            <div class="relative flex items-start gap-6">
-              <div class="flex-1 text-right hidden md:block">
-                <div
-                  class="inline-block bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <h3 class="text-gray-900 font-semibold mb-2">Auto-Accept</h3>
-                  <p class="text-gray-500 text-sm">
-                    When a matching job appears, the bot clicks through and
-                    accepts it. No human needed.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="relative z-10 w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-violet-300"
-              >
-                3
-              </div>
-              <div class="flex-1 md:hidden">
-                <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 class="text-gray-900 font-semibold mb-2">Auto-Accept</h3>
-                  <p class="text-gray-500 text-sm">
-                    When a matching job appears, the bot clicks through and
-                    accepts it. No human needed.
-                  </p>
-                </div>
-              </div>
-              <div class="flex-1 hidden md:block"></div>
-            </div>
+          <!-- Step 4 -->
+          <div class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm">
+            <span class="text-violet-500 text-xs font-semibold tracking-wide">04</span>
+            <h3 class="text-gray-900 font-semibold mt-1 mb-2">Notify</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Pushover sends an instant alert to her phone with job details. She knows she's booked.</p>
+          </div>
+        </div>
 
-            <!-- Step 4 -->
-            <div class="relative flex items-start gap-6">
-              <div class="flex-1 hidden md:block"></div>
-              <div
-                class="relative z-10 w-10 h-10 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold shrink-0 shadow-lg shadow-violet-300"
-              >
-                4
-              </div>
-              <div class="flex-1">
-                <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 class="text-gray-900 font-semibold mb-2">
-                    Push Notification
-                  </h3>
-                  <p class="text-gray-500 text-sm">
-                    Pushover sends an instant alert to her phone with job
-                    details. She knows she's booked.
-                  </p>
-                </div>
-              </div>
+        <!-- Mobile: stacked -->
+        <div class="md:hidden space-y-3">
+          <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4">
+            <span class="text-violet-500 text-xs font-semibold">01</span>
+            <div>
+              <h3 class="text-gray-900 font-semibold text-sm mb-1">Login</h3>
+              <p class="text-gray-500 text-sm">Selenium automates browser login and navigation.</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4">
+            <span class="text-violet-500 text-xs font-semibold">02</span>
+            <div>
+              <h3 class="text-gray-900 font-semibold text-sm mb-1">Scrape</h3>
+              <p class="text-gray-500 text-sm">BeautifulSoup extracts and deduplicates job data.</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4">
+            <span class="text-violet-500 text-xs font-semibold">03</span>
+            <div>
+              <h3 class="text-gray-900 font-semibold text-sm mb-1">Accept</h3>
+              <p class="text-gray-500 text-sm">Auto-clicks to claim matching jobs instantly.</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4">
+            <span class="text-violet-500 text-xs font-semibold">04</span>
+            <div>
+              <h3 class="text-gray-900 font-semibold text-sm mb-1">Notify</h3>
+              <p class="text-gray-500 text-sm">Pushover sends instant phone alerts with details.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Technical Decisions -->
+      <!-- How It Stays Running -->
+      <section class="mb-20">
+        <div class="flex items-center gap-3 mb-6">
+          <div
+            class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center"
+          >
+            <svg
+              class="w-5 h-5 text-violet-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              ></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-900">How It Stays Running</h2>
+        </div>
+
+        <p class="text-gray-600 mb-8">
+          She trusted this bot enough to stop manually checking for jobs. If it failed, she'd miss a job—and that would be on me. I was funding this myself on a small DigitalOcean droplet, so I had to be smart about memory while making it reliable enough that she never had to worry.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="bg-white rounded-xl p-5 border border-gray-200 hover:border-violet-300 transition-colors shadow-sm"
+          >
+            <div class="text-violet-600 font-mono text-sm mb-2">TemporaryError vs PermanentError</div>
+            <h3 class="text-gray-900 font-semibold mb-2">Not All Errors Are Equal</h3>
+            <p class="text-gray-500 text-sm">
+              Network hiccup? Retry silently. Credentials invalid? Stop and alert. She only hears about real problems. When something breaks, dump_debug() captures HTML and a screenshot so I can fix it without asking her what happened.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 border border-gray-200 hover:border-violet-300 transition-colors shadow-sm"
+          >
+            <div class="text-violet-600 font-mono text-sm mb-2">memory management</div>
+            <h3 class="text-gray-900 font-semibold mb-2">Protecting the Droplet</h3>
+            <p class="text-gray-500 text-sm">
+              Small droplet meant being careful. Driver recreated every 10 cycles before memory bloats. Screenshots deleted after sending. Retries instead of recreations—cheaper on resources. Cleanup runs even if close() fails. No zombie processes eating RAM.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 border border-gray-200 hover:border-violet-300 transition-colors shadow-sm"
+          >
+            <div class="text-violet-600 font-mono text-sm mb-2">defensive checks</div>
+            <h3 class="text-gray-900 font-semibold mb-2">Never Assume State</h3>
+            <p class="text-gray-500 text-sm">
+              Check driver is alive. Check logged in. Wait for elements to actually load. Verify before every action. Redundant? Yes. But she was trusting this completely—I couldn't afford to be wrong.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works For Her -->
       <section class="mb-20">
         <div class="flex items-center gap-3 mb-8">
           <div
@@ -376,47 +387,170 @@ const tags = ["Python", "Selenium", "BeautifulSoup", "Pushover API"];
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               ></path>
             </svg>
           </div>
-          <h2 class="text-2xl font-bold text-gray-900">Technical Decisions</h2>
+          <h2 class="text-2xl font-bold text-gray-900">How It Works For Her</h2>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-4">
+        <div class="grid md:grid-cols-2 gap-4">
           <div
-            class="bg-white rounded-xl p-5 border border-gray-200 hover:border-violet-300 transition-colors shadow-sm"
+            class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
           >
-            <div class="text-violet-600 font-mono text-sm mb-2">Selenium</div>
-            <h3 class="text-gray-900 font-semibold mb-2">Why not requests?</h3>
-            <p class="text-gray-500 text-sm">
-              The portal needs real browser interaction - JavaScript execution,
-              clicking, form submissions. HTTP requests alone can't handle it.
+            <p class="text-violet-600 text-sm font-medium mb-2">
+              What if she's sleeping and a job gets auto-accepted she doesn't
+              want?
             </p>
-          </div>
-
-          <div
-            class="bg-white rounded-xl p-5 border border-gray-200 hover:border-violet-300 transition-colors shadow-sm"
-          >
-            <div class="text-violet-600 font-mono text-sm mb-2">Pushover</div>
-            <h3 class="text-gray-900 font-semibold mb-2">Why this for alerts?</h3>
-            <p class="text-gray-500 text-sm">
-              Dead simple API, reliable delivery, works on iOS and Android. No
-              need to build notification infrastructure.
-            </p>
-          </div>
-
-          <div
-            class="bg-white rounded-xl p-5 border border-gray-200 hover:border-violet-300 transition-colors shadow-sm"
-          >
-            <div class="text-violet-600 font-mono text-sm mb-2">
-              Digital Ocean
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <p class="text-gray-600 text-sm">
+                Added a same-day toggle. Off by default. If she wants a job
+                today, she turns it on. If it's night and she hasn't gotten one
+                and wants to try early tomorrow, she keeps it off.
+              </p>
             </div>
-            <h3 class="text-gray-900 font-semibold mb-2">Why a droplet?</h3>
-            <p class="text-gray-500 text-sm">
-              Runs 24/7 without my laptop. Set it up once, and it just works.
-              Low cost, high uptime.
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <p class="text-violet-600 text-sm font-medium mb-2">
+              What if auto-accept fails but the job is still there?
             </p>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <p class="text-gray-600 text-sm">
+                Notify her first when the job appears, then try to accept. If it
+                fails, she still knows the job exists and can grab it herself.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <p class="text-violet-600 text-sm font-medium mb-2">
+              What if it's a job she doesn't want, but she'd take it today?
+            </p>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <p class="text-gray-600 text-sm">
+                Still notify her about all jobs, even ones outside her
+                preferences. Maybe she doesn't have anything else lined up.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <p class="text-violet-600 text-sm font-medium mb-2">
+              What if the accept fails and she doesn't know why?
+            </p>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <p class="text-gray-600 text-sm">
+                Check for specific error messages like "job no longer available"
+                and tell her the actual reason, not just "it failed."
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <p class="text-violet-600 text-sm font-medium mb-2">
+              What if the site changes and breaks the bot?
+            </p>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <p class="text-gray-600 text-sm">
+                Save the page HTML and a screenshot when things fail so I can
+                see exactly what happened and fix it without bothering her.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <p class="text-violet-600 text-sm font-medium mb-2">
+              What if something fails but might work if we try again?
+            </p>
+            <div class="flex items-start gap-2">
+              <svg
+                class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <p class="text-gray-600 text-sm">
+                Retry silently on temporary errors. Only notify her when it's
+                actually broken and needs attention.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -460,7 +594,9 @@ const tags = ["Python", "Selenium", "BeautifulSoup", "Pushover API"];
           <div class="p-5 flex items-start gap-4">
             <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 shrink-0"></div>
             <div>
-              <h3 class="text-gray-900 font-medium mb-1">Timing is Everything</h3>
+              <h3 class="text-gray-900 font-medium mb-1">
+                Timing is Everything
+              </h3>
               <p class="text-gray-500 text-sm">
                 Too fast and elements aren't ready. Too slow and you miss jobs.
                 Finding the balance took iteration.
@@ -493,12 +629,14 @@ const tags = ["Python", "Selenium", "BeautifulSoup", "Pushover API"];
       <!-- Result -->
       <section class="mb-20">
         <div
-          class="bg-gradient-to-br from-violet-100 to-white rounded-2xl p-8 md:p-10 border border-violet-200 shadow-sm"
+          class="bg-gradient-to-br from-violet-50 to-white rounded-2xl p-6 md:p-8 border border-violet-200"
         >
-          <div class="flex items-center gap-3 mb-5">
-            <div class="w-12 h-12 bg-violet-500 rounded-full flex items-center justify-center">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 bg-violet-500 rounded-full flex items-center justify-center"
+            >
               <svg
-                class="w-6 h-6 text-white"
+                class="w-5 h-5 text-white"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -507,13 +645,12 @@ const tags = ["Python", "Selenium", "BeautifulSoup", "Pushover API"];
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2.5"
-                  d="M5 13l4 4L19 7"
-                ></path>
+                  d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
             <h2 class="text-2xl font-bold text-gray-900">The Result</h2>
           </div>
-          <p class="text-xl md:text-2xl text-gray-700 leading-relaxed font-medium">
+          <p class="text-lg text-gray-700 leading-relaxed">
             My sister doesn't check the job portal anymore. She gets a
             notification, and the job is already hers. The system has been
             running reliably, and she hasn't missed a job since.
@@ -545,39 +682,71 @@ const tags = ["Python", "Selenium", "BeautifulSoup", "Pushover API"];
         </div>
 
         <div class="grid md:grid-cols-2 gap-4">
-          <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-            <svg class="w-6 h-6 text-violet-300 mb-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          <div
+            class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <svg
+              class="w-6 h-6 text-violet-300 mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+              ></path>
             </svg>
             <p class="text-gray-600 italic">
               Web scraping in the real world is messier than tutorials make it
               seem.
             </p>
           </div>
-          <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-            <svg class="w-6 h-6 text-violet-300 mb-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          <div
+            class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <svg
+              class="w-6 h-6 text-violet-300 mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+              ></path>
             </svg>
             <p class="text-gray-600 italic">
               Building for someone you care about changes how you approach
               reliability.
             </p>
           </div>
-          <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-            <svg class="w-6 h-6 text-violet-300 mb-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          <div
+            class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <svg
+              class="w-6 h-6 text-violet-300 mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+              ></path>
             </svg>
             <p class="text-gray-600 italic">
               Deployment and monitoring matter as much as the code itself.
             </p>
           </div>
-          <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
-            <svg class="w-6 h-6 text-violet-300 mb-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+          <div
+            class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm hover:shadow-md transition-shadow"
+          >
+            <svg
+              class="w-6 h-6 text-violet-300 mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+              ></path>
             </svg>
             <p class="text-gray-600 italic">
-              Sometimes the best projects come from seeing someone struggle
-              with a solvable problem.
+              Sometimes the best projects come from seeing someone struggle with
+              a solvable problem.
             </p>
           </div>
         </div>
