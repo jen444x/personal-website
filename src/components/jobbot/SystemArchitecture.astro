@@ -1,0 +1,518 @@
+<!-- System Architecture -->
+<section class="mb-20">
+  <div class="flex items-center gap-3 mb-6">
+    <div
+      class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center"
+    >
+      <svg
+        class="w-5 h-5 text-violet-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+        ></path>
+      </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-gray-900">System Architecture</h2>
+  </div>
+
+  <p class="text-sm text-gray-400 mb-5">
+    Hover any module for implementation details. Inside the dashed border is my code; gray boxes are external services.
+  </p>
+
+  <div
+    id="arch-diagram-container"
+    class="relative bg-white rounded-2xl border border-gray-200 shadow-sm p-4 md:p-6 overflow-x-auto"
+  >
+    <svg
+      width="680"
+      height="590"
+      viewBox="0 0 680 590"
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-full max-w-2xl mx-auto"
+      font-family="Inter, system-ui, -apple-system, sans-serif"
+      role="img"
+      aria-label="Job bot system architecture"
+    >
+      <defs>
+        <marker
+          id="arch-arrow"
+          viewBox="0 0 10 10"
+          refX="8"
+          refY="5"
+          markerWidth="6"
+          markerHeight="6"
+          orient="auto-start-reverse"
+        >
+          <path
+            d="M2 1L8 5L2 9"
+            fill="none"
+            stroke="#888780"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </marker>
+        <marker
+          id="arch-arrow-violet"
+          viewBox="0 0 10 10"
+          refX="8"
+          refY="5"
+          markerWidth="6"
+          markerHeight="6"
+          orient="auto-start-reverse"
+        >
+          <path
+            d="M2 1L8 5L2 9"
+            fill="none"
+            stroke="#7c3aed"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </marker>
+      </defs>
+
+      <style>
+        .box-gray {
+          fill: #f1efe8;
+          stroke: #5f5e5a;
+        }
+        .box-purple {
+          fill: #eeedfe;
+          stroke: #534ab7;
+        }
+        .box-teal {
+          fill: #e1f5ee;
+          stroke: #0f6e56;
+        }
+        .title-gray {
+          fill: #2c2c2a;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .title-purple {
+          fill: #3c3489;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .title-teal {
+          fill: #085041;
+          font-size: 14px;
+          font-weight: 500;
+        }
+        .sub-purple {
+          fill: #534ab7;
+          font-size: 12px;
+        }
+        .sub-teal {
+          fill: #0f6e56;
+          font-size: 12px;
+        }
+        .label {
+          fill: #5f5e5a;
+          font-size: 12px;
+        }
+        .arr {
+          stroke: #888780;
+          stroke-width: 1.5;
+          fill: none;
+        }
+        .arr-violet {
+          stroke: #7c3aed;
+          stroke-width: 1.5;
+          fill: none;
+        }
+        .label-violet {
+          fill: #7c3aed;
+          font-size: 12px;
+          font-weight: 500;
+        }
+        .arch-module {
+          cursor: pointer;
+        }
+        .arch-module rect {
+          transition: stroke-width 0.15s ease;
+        }
+        .arch-module:hover rect {
+          stroke-width: 1.5 !important;
+        }
+      </style>
+
+      <!-- Job portal -->
+      <rect
+        x="270"
+        y="20"
+        width="140"
+        height="44"
+        rx="8"
+        class="box-gray"
+        stroke-width="0.5"></rect>
+      <text
+        x="340"
+        y="42"
+        text-anchor="middle"
+        dominant-baseline="central"
+        class="title-gray">Job portal</text
+      >
+
+      <!-- Selenium bidirectional arrow -->
+      <line
+        x1="340"
+        y1="64"
+        x2="340"
+        y2="146"
+        class="arr"
+        marker-end="url(#arch-arrow)"
+        marker-start="url(#arch-arrow)"></line>
+      <text x="350" y="108" class="label">Selenium</text>
+
+      <!-- Job Bot dashed border -->
+      <rect
+        x="60"
+        y="110"
+        width="560"
+        height="300"
+        rx="14"
+        fill="none"
+        stroke="#888780"
+        stroke-width="1"
+        stroke-dasharray="6 4"></rect>
+      <text x="80" y="130" class="label">Job Bot</text>
+
+      <!-- Session orchestrator -->
+      <g class="arch-module" data-module="orchestrator">
+        <rect
+          x="200"
+          y="148"
+          width="280"
+          height="56"
+          rx="8"
+          class="box-purple"
+          stroke-width="0.5"></rect>
+        <text
+          x="340"
+          y="170"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="title-purple">Session orchestrator</text
+        >
+        <text
+          x="340"
+          y="188"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="sub-purple">Main entry point</text
+        >
+      </g>
+
+      <!-- Orchestrator → modules (spine + 4 branches) -->
+      <path d="M 305 204 L 305 348" class="arr"></path>
+      <path
+        d="M 305 268 L 290 268"
+        class="arr"
+        marker-end="url(#arch-arrow)"></path>
+      <path
+        d="M 305 268 L 320 268"
+        class="arr"
+        marker-end="url(#arch-arrow)"></path>
+      <path
+        d="M 305 348 L 290 348"
+        class="arr"
+        marker-end="url(#arch-arrow)"></path>
+      <path
+        d="M 305 348 L 320 348"
+        class="arr"
+        marker-end="url(#arch-arrow)"></path>
+
+      <!-- driver_manager -->
+      <g class="arch-module" data-module="driver">
+        <rect
+          x="100"
+          y="240"
+          width="190"
+          height="56"
+          rx="8"
+          class="box-teal"
+          stroke-width="0.5"></rect>
+        <text
+          x="195"
+          y="262"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="title-teal">driver_manager</text
+        >
+        <text
+          x="195"
+          y="280"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="sub-teal">Chrome lifecycle</text
+        >
+      </g>
+
+      <!-- error_handling -->
+      <g class="arch-module" data-module="errors">
+        <rect
+          x="320"
+          y="240"
+          width="190"
+          height="56"
+          rx="8"
+          class="box-teal"
+          stroke-width="0.5"></rect>
+        <text
+          x="415"
+          y="262"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="title-teal">error_handling</text
+        >
+        <text
+          x="415"
+          y="280"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="sub-teal">Exceptions, retry</text
+        >
+      </g>
+
+      <!-- timing -->
+      <g class="arch-module" data-module="timing">
+        <rect
+          x="100"
+          y="320"
+          width="190"
+          height="56"
+          rx="8"
+          class="box-teal"
+          stroke-width="0.5"></rect>
+        <text
+          x="195"
+          y="342"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="title-teal">timing</text
+        >
+        <text
+          x="195"
+          y="360"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="sub-teal">Randomized waits</text
+        >
+      </g>
+
+      <!-- notifications -->
+      <g class="arch-module" data-module="notifications">
+        <rect
+          x="320"
+          y="320"
+          width="190"
+          height="56"
+          rx="8"
+          class="box-teal"
+          stroke-width="0.5"></rect>
+        <text
+          x="415"
+          y="342"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="title-teal">notifications</text
+        >
+        <text
+          x="415"
+          y="360"
+          text-anchor="middle"
+          dominant-baseline="central"
+          class="sub-teal">Pushover sender</text
+        >
+      </g>
+
+      <!-- notifications → Pushover API -->
+      <path
+        d="M415 376 L415 440"
+        class="arr"
+        marker-end="url(#arch-arrow)"></path>
+
+      <!-- Pushover API -->
+      <rect
+        x="345"
+        y="440"
+        width="140"
+        height="44"
+        rx="8"
+        class="box-gray"
+        stroke-width="0.5"></rect>
+      <text
+        x="415"
+        y="462"
+        text-anchor="middle"
+        dominant-baseline="central"
+        class="title-gray">Pushover API</text
+      >
+
+      <!-- Pushover → User (job alerts, violet) -->
+      <path
+        d="M415 484 L415 505 L250 505 L250 530"
+        class="arr-violet"
+        marker-end="url(#arch-arrow-violet)"></path>
+      <text x="330" y="500" text-anchor="middle" class="label-violet"
+        >job alerts</text
+      >
+
+      <!-- Pushover → Admin (errors + status, gray) -->
+      <path
+        d="M415 484 L415 530"
+        class="arr"
+        marker-end="url(#arch-arrow)"></path>
+      <text x="425" y="510" class="label">errors + status</text>
+
+      <!-- User -->
+      <rect
+        x="180"
+        y="530"
+        width="140"
+        height="44"
+        rx="8"
+        class="box-gray"
+        stroke-width="0.5"></rect>
+      <text
+        x="250"
+        y="552"
+        text-anchor="middle"
+        dominant-baseline="central"
+        class="title-gray">User</text
+      >
+
+      <!-- Admin (Jen) -->
+      <rect
+        x="345"
+        y="530"
+        width="140"
+        height="44"
+        rx="8"
+        class="box-gray"
+        stroke-width="0.5"></rect>
+      <text
+        x="415"
+        y="552"
+        text-anchor="middle"
+        dominant-baseline="central"
+        class="title-gray">Admin (Jen)</text
+      >
+    </svg>
+  </div>
+</section>
+
+<!-- Fixed tooltip for architecture diagram — position set by JS -->
+<div
+  id="arch-tooltip"
+  style="display:none;position:fixed;z-index:9999;background:#111827;border:1px solid #374151;color:#f9fafb;border-radius:12px;padding:14px;width:240px;pointer-events:none;font-size:12px;line-height:1.6;box-shadow:0 20px 25px -5px rgba(0,0,0,0.4);"
+>
+</div>
+
+<script>
+  const tooltipContent: Record<string, string> = {
+    orchestrator: `
+      <div style="font-weight:600;margin-bottom:8px;">Session Orchestrator</div>
+      <div style="color:#d1d5db;margin-bottom:8px;">Runs sessions forever. Each one is 10 job checks with filter and accept.</div>
+      <div style="color:#d1d5db;display:flex;flex-direction:column;gap:5px;margin-bottom:10px;">
+        <div>· <span style="color:#6ee7b7;font-family:monospace">prepare_session()</span> recovers cheapest-first: refresh → re-login → rebuild driver only if dead</div>
+        <div>· <span style="color:#6ee7b7;font-family:monospace">accept_first_job()</span> filters by date, same-day toggle, and classification, then accepts the first job that passes</div>
+        <div>· Notifies before accepting, so if the click fails she still sees the job and can grab it herself</div>
+      </div>
+      <div style="border-left:2px solid #a78bfa;padding-left:8px;">
+        <div style="color:#c4b5fd;font-weight:600;margin-bottom:3px;">Stateless restart</div>
+        <div style="color:#d1d5db;">If the session crashes, <span style="color:#6ee7b7;font-family:monospace">retry_on_failure</span> runs the whole thing again from scratch. No "resume mid-session" logic. Safer to start clean than reconcile partial state.</div>
+      </div>
+    `,
+    driver: `
+      <div style="font-weight:600;margin-bottom:8px;">driver_manager</div>
+      <div style="color:#d1d5db;margin-bottom:8px;">Owns the Chrome driver lifecycle.</div>
+      <div style="color:#d1d5db;display:flex;flex-direction:column;gap:5px;">
+        <div>· Health probe via <span style="color:#6ee7b7;font-family:monospace">driver.current_url</span> (free, no side effects)</div>
+        <div>· <span style="color:#6ee7b7;font-family:monospace">destroy_driver()</span> always wipes <span style="color:#6ee7b7;font-family:monospace">/tmp/chrome_jobbot</span> in a <span style="color:#6ee7b7;font-family:monospace">finally</span> block (stale profiles add up on the small droplet)</div>
+        <div>· Headless-mode hardening: 3 Chrome flags + JS override of <span style="color:#6ee7b7;font-family:monospace">navigator.webdriver</span></div>
+        <div>· Creation failures surface as <span style="color:#fcd34d;font-family:monospace">TemporaryError</span> so the orchestrator can retry</div>
+      </div>
+    `,
+    errors: `
+      <div style="font-weight:600;margin-bottom:8px;">error_handling</div>
+      <div style="color:#d1d5db;margin-bottom:8px;">Two domain exceptions, one rule: never wake her up for a false alarm.</div>
+      <div style="color:#d1d5db;display:flex;flex-direction:column;gap:8px;margin-bottom:10px;">
+        <div>· <span style="color:#fcd34d;font-family:monospace">TemporaryError</span>: retry silently <span style="color:#9ca3af;font-style:italic;">(page slow, login timeout, button not yet rendered)</span></div>
+        <div>· <span style="color:#f87171;font-family:monospace">PermanentError</span>: stop and notify both <span style="color:#9ca3af;font-style:italic;">(missing credentials, HTML structure changed)</span></div>
+        <div>· Selenium errors get classified at the call site, so the retry layer stays simple (just run the function again)</div>
+      </div>
+      <div style="border-left:2px solid #a78bfa;padding-left:8px;">
+        <div style="color:#c4b5fd;font-weight:600;margin-bottom:3px;">Why shallow retries</div>
+        <div style="color:#d1d5db;">Retry depth lives at one level (the whole session). Nesting retries inside retries would multiply fast: 2× outer × 3× inner = 6 attempts, another layer = 18. Kept it flat on purpose.</div>
+      </div>
+    `,
+    timing: `
+      <div style="font-weight:600;margin-bottom:8px;">timing</div>
+      <div style="color:#d1d5db;margin-bottom:8px;">Time-of-day aware waits, weighted from looking at when jobs actually post.</div>
+      <div style="color:#d1d5db;display:flex;flex-direction:column;gap:5px;margin-bottom:10px;">
+        <div>· Shorter intervals during peak hours, longer overnight</div>
+        <div>· Random within each bucket so the request pattern doesn't look mechanical</div>
+      </div>
+      <div style="border-left:2px solid #a78bfa;padding-left:8px;">
+        <div style="color:#c4b5fd;font-weight:600;margin-bottom:3px;">5am edge case</div>
+        <div style="color:#d1d5db;">A night wait that would cross 5am gets clipped, then a fresh early-morning wait runs on top. The bot never sleeps through the high-value morning window, and the first check isn't at 5:00 sharp (predictable = bot signal).</div>
+      </div>
+    `,
+    notifications: `
+      <div style="font-weight:600;margin-bottom:8px;">notifications</div>
+      <div style="color:#d1d5db;margin-bottom:8px;">Two recipient tiers via Pushover API.</div>
+      <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:10px;">
+        <div style="border-left:2px solid #7c3aed;padding-left:8px;">
+          <div style="color:#c4b5fd;font-family:monospace;margin-bottom:2px;">notify_users()</div>
+          <div style="color:#d1d5db;">Sister + me · job alerts + screenshots</div>
+        </div>
+        <div style="border-left:2px solid #4b5563;padding-left:8px;">
+          <div style="color:#9ca3af;font-family:monospace;margin-bottom:2px;">notify_admin()</div>
+          <div style="color:#d1d5db;">Me only · errors + debug info</div>
+        </div>
+      </div>
+      <div style="color:#d1d5db;display:flex;flex-direction:column;gap:5px;">
+        <div>· One <span style="color:#6ee7b7;font-family:monospace">send_notification()</span> does the work, with per-recipient try/except so one failure doesn't block others</div>
+        <div>· Screenshots are attached then deleted (bounded disk on the small droplet)</div>
+        <div>· <span style="color:#6ee7b7;font-family:monospace">dump_debug()</span> saves HTML + screenshot so I can investigate failures without bothering her</div>
+      </div>
+    `,
+  };
+
+  const tooltip = document.getElementById("arch-tooltip") as HTMLElement | null;
+  const modules = document.querySelectorAll<SVGGElement>(".arch-module");
+
+  if (tooltip) {
+    modules.forEach((module) => {
+      const key = module.dataset.module ?? "";
+
+      module.addEventListener("mouseenter", () => {
+        tooltip.innerHTML = tooltipContent[key] ?? "";
+        tooltip.style.display = "block";
+      });
+
+      module.addEventListener("mouseleave", () => {
+        tooltip.style.display = "none";
+      });
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (tooltip.style.display === "none") return;
+      let x = e.clientX + 14;
+      let y = e.clientY + 14;
+      if (x + 240 > window.innerWidth - 8) x = e.clientX - 254;
+      if (y + tooltip.offsetHeight > window.innerHeight - 8) {
+        y = e.clientY - tooltip.offsetHeight - 14;
+      }
+      tooltip.style.left = x + "px";
+      tooltip.style.top = y + "px";
+    });
+  }
+</script>

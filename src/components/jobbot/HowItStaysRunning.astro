@@ -1,0 +1,311 @@
+<!-- How It Stays Running -->
+<section class="mb-20">
+  <div class="flex items-center gap-3 mb-6">
+    <div
+      class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center"
+    >
+      <svg
+        class="w-5 h-5 text-violet-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+        ></path>
+      </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-gray-900">How It Stays Running</h2>
+  </div>
+
+  <p class="text-gray-600 leading-relaxed mb-3 text-lg">
+    She stopped checking the portal manually. That means a silent failure
+    wasn't just a bug — it was her missing income. I was self-funding this
+    on a $6/month DigitalOcean droplet, so throwing more resources at the
+    problem wasn't an option.
+  </p>
+  <p class="text-gray-600 leading-relaxed mb-8">
+    Reliability had to be designed in. Here's what that looked like.
+  </p>
+
+  <!-- Loop diagram -->
+  <div
+    class="bg-gray-50 border border-gray-200 rounded-2xl p-5 md:p-7 mb-6 relative"
+  >
+    <p
+      class="text-xs font-medium text-gray-400 uppercase tracking-widest mb-6"
+    >
+      Session (runs forever)
+    </p>
+    <div class="flex flex-col items-center">
+      <!-- Prepare session -->
+      <div
+        class="w-full max-w-sm bg-white border border-gray-200 rounded-xl px-5 py-3 text-center"
+      >
+        <p class="text-sm font-semibold text-gray-900">Prepare session</p>
+        <p class="text-xs text-gray-500 mt-0.5">
+          Create Chrome driver · verify logged in · re-login if needed
+        </p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="flex flex-col items-center my-1">
+        <div class="w-px h-4 bg-gray-200"></div>
+        <div
+          class="w-1.5 h-1.5 rotate-45 border-r border-b border-gray-300 -mt-px"
+        >
+        </div>
+      </div>
+
+      <!-- Scrape portal with error chips inside -->
+      <div
+        class="w-full max-w-sm bg-white border border-gray-200 rounded-xl px-5 py-3"
+      >
+        <p class="text-sm font-semibold text-gray-900 text-center">
+          Scrape portal
+        </p>
+        <p class="text-xs text-gray-500 text-center mt-0.5">
+          Navigate to Available Jobs · parse job table
+        </p>
+        <div class="border-t border-gray-100 pt-2.5 mt-3 space-y-1.5">
+          <div class="flex items-start gap-2">
+            <span
+              class="shrink-0 mt-0.5 px-2 py-0.5 rounded-full bg-yellow-50 border border-yellow-200 text-yellow-700 text-xs font-medium"
+              >TemporaryError</span
+            >
+            <span class="text-xs text-gray-400"
+              >retry whole session up to 2× · if exhausted, alert me</span
+            >
+          </div>
+          <div class="flex items-start gap-2">
+            <span
+              class="shrink-0 mt-0.5 px-2 py-0.5 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-medium"
+              >PermanentError</span
+            >
+            <span class="text-xs text-gray-400"
+              >dump HTML + screenshot · alert me · stop</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+      <div class="flex flex-col items-center my-1">
+        <div class="w-px h-4 bg-gray-200"></div>
+        <div
+          class="w-1.5 h-1.5 rotate-45 border-r border-b border-gray-300 -mt-px"
+        >
+        </div>
+      </div>
+
+      <!-- Decision diamond -->
+      <div class="relative w-28 h-28 flex items-center justify-center">
+        <div
+          class="absolute w-20 h-20 rotate-45 rounded-md bg-violet-100 border border-violet-300"
+        >
+        </div>
+        <div class="relative z-10 text-center">
+          <p class="text-xs font-bold text-violet-800">New</p>
+          <p class="text-xs font-bold text-violet-800">jobs?</p>
+        </div>
+      </div>
+
+      <!-- Branch labels -->
+      <div class="w-full max-w-sm flex justify-between px-6 -mt-1 mb-1">
+        <span class="text-xs font-semibold text-gray-400">No</span>
+        <span class="text-xs font-semibold text-violet-600">Yes</span>
+      </div>
+
+      <!-- Branches -->
+      <div
+        class="w-full max-w-sm flex justify-between gap-4 items-stretch"
+      >
+        <!-- No branch -->
+        <div class="flex-1 flex flex-col items-center justify-start">
+          <div class="w-px h-4 bg-gray-200 mb-2"></div>
+          <div
+            class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 text-center"
+          >
+            <p class="text-xs text-gray-500">
+              Verify "no jobs" message loaded correctly
+            </p>
+          </div>
+        </div>
+
+        <!-- Yes branch -->
+        <div class="flex-1 flex flex-col items-center justify-start">
+          <div class="w-px h-4 bg-violet-200 mb-2"></div>
+          <div
+            class="w-full bg-violet-600 rounded-xl px-3 py-2.5 text-center"
+          >
+            <p class="text-xs font-semibold text-white">
+              Notify her first
+            </p>
+            <p class="text-xs text-violet-200 mt-0.5">
+              screenshot + job details
+            </p>
+          </div>
+          <div class="w-px h-2 bg-violet-200 my-1.5"></div>
+          <div
+            class="w-full bg-white border border-gray-200 rounded-xl px-3 py-2.5 text-center"
+          >
+            <p class="text-xs font-semibold text-gray-700 mb-1">
+              Accept job
+            </p>
+            <p class="text-xs text-gray-400">
+              filter: same-day · dates · classification
+            </p>
+            <p class="text-xs text-gray-400 mt-0.5">
+              click → confirm dialog → verify
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Merge line -->
+      <div class="w-full max-w-sm h-px bg-gray-200 mt-3"></div>
+
+      <!-- Arrow -->
+      <div class="flex flex-col items-center my-1">
+        <div class="w-px h-4 bg-gray-200"></div>
+        <div
+          class="w-1.5 h-1.5 rotate-45 border-r border-b border-gray-300 -mt-px"
+        >
+        </div>
+      </div>
+
+      <!-- Wait -->
+      <div
+        class="w-full max-w-sm bg-white border border-gray-200 rounded-xl px-5 py-3 text-center"
+      >
+        <p class="text-sm font-semibold text-gray-900">Wait</p>
+        <p class="text-xs text-gray-500 mt-0.5">
+          Time-of-day aware · 5–25 min mornings · 2–8 min evenings · up to
+          4.5 hrs overnight
+        </p>
+      </div>
+
+      <!-- Arrow down from Wait -->
+      <div class="flex flex-col items-center my-1">
+        <div class="w-px h-4 bg-gray-200"></div>
+        <div
+          class="w-1.5 h-1.5 rotate-45 border-r border-b border-gray-300 -mt-px"
+        >
+        </div>
+      </div>
+
+      <!-- After 10 cycles: outer reset -->
+      <div
+        class="w-full max-w-sm bg-gray-100 border border-dashed border-gray-300 rounded-xl px-5 py-3 flex items-center gap-3"
+      >
+        <svg
+          class="w-4 h-4 text-gray-500 shrink-0"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          ></path>
+        </svg>
+        <div class="text-left">
+          <p class="text-xs font-semibold text-gray-700">
+            After 10 cycles
+          </p>
+          <p class="text-xs text-gray-500 mt-0.5">
+            Chrome destroyed, fresh session starts at the top
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inner loop curve overlay (×10), desktop only -->
+    <div
+      class="hidden md:block absolute top-20 bottom-32 right-4 lg:right-8 w-14 lg:w-16 pointer-events-none"
+    >
+      <svg
+        class="w-full h-full"
+        viewBox="0 0 60 400"
+        preserveAspectRatio="xMidYMid meet"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <marker
+            id="stays-loop-arrow"
+            viewBox="0 0 10 10"
+            refX="8"
+            refY="5"
+            markerWidth="6"
+            markerHeight="6"
+            orient="auto"
+          >
+            <path
+              d="M2 1 L8 5 L2 9"
+              fill="none"
+              stroke="#a78bfa"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </marker>
+        </defs>
+        <path
+          d="M 5 385 C 60 385, 60 15, 5 15"
+          fill="none"
+          stroke="#a78bfa"
+          stroke-width="2"
+          stroke-linecap="round"
+          marker-end="url(#stays-loop-arrow)"></path>
+        <text
+          x="48"
+          y="195"
+          text-anchor="middle"
+          fill="#7c3aed"
+          font-size="15"
+          font-weight="700">10×</text
+        >
+        <text
+          x="48"
+          y="213"
+          text-anchor="middle"
+          fill="#7c3aed"
+          font-size="8"
+          font-weight="600"
+          letter-spacing="1">LOOPS</text
+        >
+      </svg>
+    </div>
+  </div>
+
+  <!-- Error philosophy -->
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
+      <p class="text-sm font-semibold text-yellow-800 mb-1.5">
+        TemporaryError
+      </p>
+      <p class="text-xs text-gray-600 leading-relaxed">
+        Network blip, page slow to load, session expired — things that
+        might fix themselves. The whole session retries silently, up to 2
+        times. She never gets notified unless it can't recover.
+      </p>
+    </div>
+    <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+      <p class="text-sm font-semibold text-red-700 mb-1.5">
+        PermanentError
+      </p>
+      <p class="text-xs text-gray-600 leading-relaxed">
+        Page structure changed, credentials invalid — things that need a
+        human. Stop immediately, notify both of us. She can accept jobs
+        herself while I get it fixed.
+      </p>
+    </div>
+  </div>
+  <p class="text-xs text-gray-400 text-center mt-3">
+    The goal was one rule: never wake her up for a false alarm.
+  </p>
+</section>

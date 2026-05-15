@@ -1,0 +1,147 @@
+<!-- How It Works -->
+<section class="mb-20">
+  <div class="flex items-center gap-3 mb-6">
+    <div
+      class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center"
+    >
+      <svg
+        class="w-5 h-5 text-violet-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+      </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-gray-900">How It Works</h2>
+  </div>
+
+  <!-- Desktop: horizontal row -->
+  <div class="hidden md:grid md:grid-cols-4 gap-4 relative">
+    <!-- Connecting line behind cards -->
+    <div
+      class="absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-violet-300 via-violet-400 to-violet-300 z-0"
+    >
+    </div>
+
+    <!-- Step 1 -->
+    <div
+      class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm"
+    >
+      <span class="text-violet-500 text-xs font-semibold tracking-wide"
+        >01</span
+      >
+      <h3 class="text-gray-900 font-semibold mt-1 mb-2">Prepare</h3>
+      <p class="text-gray-500 text-sm leading-relaxed">
+        Spins up Chrome, logs in, and confirms the session works. If
+        something's off, re-login happens before anything else — no silent
+        failures downstream.
+      </p>
+    </div>
+
+    <!-- Step 2 -->
+    <div
+      class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm"
+    >
+      <span class="text-violet-500 text-xs font-semibold tracking-wide"
+        >02</span
+      >
+      <h3 class="text-gray-900 font-semibold mt-1 mb-2">Check</h3>
+      <p class="text-gray-500 text-sm leading-relaxed">
+        Polls the portal on randomized intervals tuned to peak posting
+        hours. I looked at when jobs actually post and weighted the
+        schedule around those windows. Random timing also keeps the
+        pattern from looking mechanical.
+      </p>
+    </div>
+
+    <!-- Step 3 -->
+    <div
+      class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm"
+    >
+      <span class="text-violet-500 text-xs font-semibold tracking-wide"
+        >03</span
+      >
+      <h3 class="text-gray-900 font-semibold mt-1 mb-2">Match</h3>
+      <p class="text-gray-500 text-sm leading-relaxed">
+        BeautifulSoup parses each posting. The bot filters against her
+        preferences — dates, classification, blackouts — and picks the
+        first match.
+      </p>
+    </div>
+
+    <!-- Step 4 -->
+    <div
+      class="relative z-10 bg-white rounded-xl p-5 border border-gray-200 shadow-sm"
+    >
+      <span class="text-violet-500 text-xs font-semibold tracking-wide"
+        >04</span
+      >
+      <h3 class="text-gray-900 font-semibold mt-1 mb-2">Act</h3>
+      <p class="text-gray-500 text-sm leading-relaxed">
+        Accepts the job and pushes a screenshot to her phone with the
+        outcome: accepted, found-but-failed, skipped, or error. She wakes
+        up to a finished job, not a maybe.
+      </p>
+    </div>
+  </div>
+
+  <!-- Mobile: stacked -->
+  <div class="md:hidden space-y-3">
+    <div
+      class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4"
+    >
+      <span class="text-violet-500 text-xs font-semibold">01</span>
+      <div>
+        <h3 class="text-gray-900 font-semibold text-sm mb-1">Prepare</h3>
+        <p class="text-gray-500 text-sm">
+          Spins up Chrome, logs in, and confirms the session works —
+          re-login if something's off, so nothing fails silently
+          downstream.
+        </p>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4"
+    >
+      <span class="text-violet-500 text-xs font-semibold">02</span>
+      <div>
+        <h3 class="text-gray-900 font-semibold text-sm mb-1">Check</h3>
+        <p class="text-gray-500 text-sm">
+          Polls on randomized intervals weighted around peak posting hours
+          — tight mornings, looser overnight. Random timing also keeps the
+          pattern from looking mechanical.
+        </p>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4"
+    >
+      <span class="text-violet-500 text-xs font-semibold">03</span>
+      <div>
+        <h3 class="text-gray-900 font-semibold text-sm mb-1">Match</h3>
+        <p class="text-gray-500 text-sm">
+          BeautifulSoup parses each posting. Filters against her
+          preferences — dates, classification, blackouts — and picks the
+          first match.
+        </p>
+      </div>
+    </div>
+    <div
+      class="bg-white rounded-xl p-4 border border-gray-200 shadow-sm flex gap-4"
+    >
+      <span class="text-violet-500 text-xs font-semibold">04</span>
+      <div>
+        <h3 class="text-gray-900 font-semibold text-sm mb-1">Act</h3>
+        <p class="text-gray-500 text-sm">
+          Accepts the job and pushes a screenshot showing the outcome:
+          accepted, found-but-failed, skipped, or error.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
