@@ -21,8 +21,11 @@
     <h2 class="text-2xl font-bold text-gray-900">System Architecture</h2>
   </div>
 
-  <p class="text-sm text-gray-400 mb-5">
-    Hover any module for implementation details. Inside the dashed border is my code; gray boxes are external services.
+  <p class="text-base text-gray-700 mb-2 leading-relaxed">
+    One orchestrator, four single-purpose modules, two external services. The dashed border separates code I wrote from systems I integrated.
+  </p>
+  <p class="text-xs text-gray-400 mb-5">
+    Hover any module for the deeper trade-offs.
   </p>
 
   <div
@@ -419,15 +422,15 @@
   const tooltipContent: Record<string, string> = {
     orchestrator: `
       <div style="font-weight:600;margin-bottom:8px;">Session Orchestrator</div>
-      <div style="color:#d1d5db;margin-bottom:8px;">Runs sessions forever. Each one is 10 job checks with filter and accept.</div>
+      <div style="color:#d1d5db;margin-bottom:8px;">Main entry point. Session loop and accept flow live here.</div>
       <div style="color:#d1d5db;display:flex;flex-direction:column;gap:5px;margin-bottom:10px;">
-        <div>· <span style="color:#6ee7b7;font-family:monospace">prepare_session()</span> recovers cheapest-first: refresh → re-login → rebuild driver only if dead</div>
-        <div>· <span style="color:#6ee7b7;font-family:monospace">accept_first_job()</span> filters by date, same-day toggle, and classification, then accepts the first job that passes</div>
-        <div>· Notifies before accepting, so if the click fails she still sees the job and can grab it herself</div>
+        <div>· Destroys the driver every 10 checks (bounds Chrome's memory creep on the 1GB droplet)</div>
+        <div>· <span style="color:#6ee7b7;font-family:monospace">accept_first_job()</span> pings her on every skip too, so she sees what was rejected and can override</div>
+        <div>· Notifies before each accept, not after, so a silent click crash never hides the job</div>
       </div>
       <div style="border-left:2px solid #a78bfa;padding-left:8px;">
         <div style="color:#c4b5fd;font-weight:600;margin-bottom:3px;">Stateless restart</div>
-        <div style="color:#d1d5db;">If the session crashes, <span style="color:#6ee7b7;font-family:monospace">retry_on_failure</span> runs the whole thing again from scratch. No "resume mid-session" logic. Safer to start clean than reconcile partial state.</div>
+        <div style="color:#d1d5db;">When in-session recovery fails, the whole session tears down and restarts fresh. No partial state to reconcile.</div>
       </div>
     `,
     driver: `
@@ -447,6 +450,7 @@
         <div>· <span style="color:#fcd34d;font-family:monospace">TemporaryError</span>: retry silently <span style="color:#9ca3af;font-style:italic;">(page slow, login timeout, button not yet rendered)</span></div>
         <div>· <span style="color:#f87171;font-family:monospace">PermanentError</span>: stop and notify both <span style="color:#9ca3af;font-style:italic;">(missing credentials, HTML structure changed)</span></div>
         <div>· Selenium errors get classified at the call site, so the retry layer stays simple (just run the function again)</div>
+        <div>· Defensive checks at each call site (re-verifies login after refresh, confirms button state before clicking)</div>
       </div>
       <div style="border-left:2px solid #a78bfa;padding-left:8px;">
         <div style="color:#c4b5fd;font-weight:600;margin-bottom:3px;">Why shallow retries</div>
