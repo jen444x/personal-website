@@ -37,9 +37,9 @@
       >
       <h3 class="text-gray-900 font-semibold mt-1 mb-2">Prepare</h3>
       <p class="text-gray-500 text-sm leading-relaxed">
-        Spins up Chrome, logs in, and confirms the session works. If
-        something's off, re-login happens before anything else — no silent
-        failures downstream.
+        Selenium spins up Chrome and logs in. Before every job check, the
+        bot makes sure the session is still healthy and self-heals if not.
+        No silent failures downstream.
       </p>
     </div>
 
@@ -52,10 +52,9 @@
       >
       <h3 class="text-gray-900 font-semibold mt-1 mb-2">Check</h3>
       <p class="text-gray-500 text-sm leading-relaxed">
-        Polls the portal on randomized intervals tuned to peak posting
-        hours. I looked at when jobs actually post and weighted the
-        schedule around those windows. Random timing also keeps the
-        pattern from looking mechanical.
+        Polls the portal on randomized intervals weighted around the hours
+        jobs actually post. Random timing keeps the pattern from looking
+        mechanical.
       </p>
     </div>
 
@@ -68,9 +67,9 @@
       >
       <h3 class="text-gray-900 font-semibold mt-1 mb-2">Match</h3>
       <p class="text-gray-500 text-sm leading-relaxed">
-        BeautifulSoup parses each posting. The bot filters against her
-        preferences — dates, classification, blackouts — and picks the
-        first match.
+        BeautifulSoup parses each posting. The bot checks her filters
+        (dates, classifications, blackouts) and takes the first job that
+        works, since sub jobs go to whoever clicks first.
       </p>
     </div>
 
@@ -83,9 +82,9 @@
       >
       <h3 class="text-gray-900 font-semibold mt-1 mb-2">Act</h3>
       <p class="text-gray-500 text-sm leading-relaxed">
-        Accepts the job and pushes a screenshot to her phone with the
-        outcome: accepted, found-but-failed, skipped, or error. She wakes
-        up to a finished job, not a maybe.
+        Accepts the job and verifies the accept actually landed. A
+        screenshot follows with the result. She wakes up to an answer,
+        not a maybe.
       </p>
     </div>
   </div>
@@ -99,9 +98,9 @@
       <div>
         <h3 class="text-gray-900 font-semibold text-sm mb-1">Prepare</h3>
         <p class="text-gray-500 text-sm">
-          Spins up Chrome, logs in, and confirms the session works —
-          re-login if something's off, so nothing fails silently
-          downstream.
+          Selenium spins up Chrome and logs in. Before every job check,
+          the bot makes sure the session is still healthy and self-heals
+          if not. No silent failures downstream.
         </p>
       </div>
     </div>
@@ -112,9 +111,9 @@
       <div>
         <h3 class="text-gray-900 font-semibold text-sm mb-1">Check</h3>
         <p class="text-gray-500 text-sm">
-          Polls on randomized intervals weighted around peak posting hours
-          — tight mornings, looser overnight. Random timing also keeps the
-          pattern from looking mechanical.
+          Polls the portal on randomized intervals weighted around the
+          hours jobs actually post. Random timing keeps the pattern from
+          looking mechanical.
         </p>
       </div>
     </div>
@@ -125,9 +124,9 @@
       <div>
         <h3 class="text-gray-900 font-semibold text-sm mb-1">Match</h3>
         <p class="text-gray-500 text-sm">
-          BeautifulSoup parses each posting. Filters against her
-          preferences — dates, classification, blackouts — and picks the
-          first match.
+          BeautifulSoup parses each posting. The bot checks her filters
+          (dates, classifications, blackouts) and takes the first job
+          that works, since sub jobs go to whoever clicks first.
         </p>
       </div>
     </div>
@@ -138,8 +137,9 @@
       <div>
         <h3 class="text-gray-900 font-semibold text-sm mb-1">Act</h3>
         <p class="text-gray-500 text-sm">
-          Accepts the job and pushes a screenshot showing the outcome:
-          accepted, found-but-failed, skipped, or error.
+          Accepts the job and verifies the accept actually landed. A
+          screenshot follows with the result. She wakes up to an answer,
+          not a maybe.
         </p>
       </div>
     </div>

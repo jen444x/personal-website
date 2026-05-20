@@ -18,7 +18,7 @@
         ></path>
       </svg>
     </div>
-    <h2 class="text-2xl font-bold text-gray-900">Challenges</h2>
+    <h2 class="text-2xl font-bold text-gray-900">What I had to solve</h2>
   </div>
 
   <div
@@ -27,10 +27,19 @@
     <div class="p-5 flex items-start gap-4">
       <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 shrink-0"></div>
       <div>
-        <h3 class="text-gray-900 font-medium mb-1">Session Management</h3>
-        <p class="text-gray-500 text-sm">
-          Handling timeouts and re-authentication when sessions expire
-          mid-run.
+        <h3 class="text-gray-900 font-medium mb-1">
+          I couldn't see what the bot was doing in real time.
+        </h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          It ran headless on a server I wasn't watching, parsing a page
+          that only existed at the moment a job was posted. So throughout
+          development, the bot saved the HTML it was pulling and took
+          screenshots on every check, and I'd review them to confirm what
+          the bot saw matched what was actually there. I added an in-page
+          check for the "no jobs available" text so an empty result was
+          confirmed, not assumed. My sister kept checking the portal
+          manually as ground truth until I was sure the bot's signal was
+          reliable enough to take her out of the loop.
         </p>
       </div>
     </div>
@@ -38,35 +47,53 @@
       <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 shrink-0"></div>
       <div>
         <h3 class="text-gray-900 font-medium mb-1">
-          Timing is Everything
+          The platform was blocking my bot.
         </h3>
-        <p class="text-gray-500 text-sm">
-          Too fast and elements aren't ready. Too slow and you miss jobs.
-          Finding the balance took iteration.
-        </p>
-      </div>
-    </div>
-    <div class="p-5 flex items-start gap-4">
-      <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 shrink-0"></div>
-      <div>
-        <h3 class="text-gray-900 font-medium mb-1">Bot Detection</h3>
-        <p class="text-gray-500 text-sm">
-          Running headless on Linux triggers bot-detection out of the box.
-          Had to disable the <code
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Jobs weren't showing up and at first I assumed I had a bug. I
+          didn't. Out of the box, headless Chrome announces itself: the <code
             class="font-mono bg-gray-100 px-1 rounded text-xs"
-            >webdriver</code
-          > navigator flag, strip automation indicators from Chrome options,
-          and randomize wait times so the request pattern doesn't look mechanical.
+            >navigator.webdriver</code
+          > flag, the <code class="font-mono bg-gray-100 px-1 rounded text-xs"
+            >enable-automation</code
+          > switch, and request timing too regular to be human. After some
+          research I tested the bot-detection theory: stripped all three
+          indicators in Chrome options, plus randomized the wait times in
+          the timing module so the polling pattern didn't look mechanical.
+          Jobs started flowing in.
         </p>
       </div>
     </div>
     <div class="p-5 flex items-start gap-4">
       <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 shrink-0"></div>
       <div>
-        <h3 class="text-gray-900 font-medium mb-1">Check Frequency</h3>
-        <p class="text-gray-500 text-sm">
-          Aggressive enough to catch jobs, not so aggressive it looks
-          suspicious or gets blocked.
+        <h3 class="text-gray-900 font-medium mb-1">
+          I kept running out of memory on the 1GB droplet.
+        </h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          A 24/7 program with no headroom, so I had to bound every leak
+          instead of buying a bigger box. Every part of the system had to
+          fit a memory budget: I swapped Chromium for Chrome (more stable
+          under load), destroyed and rebuilt Chrome every 10 cycles so its
+          memory couldn't creep, wiped its temp profile each time, and
+          deleted debug HTML and screenshots the moment I'd sent them. A
+          bigger droplet would have delayed the same leak, not solved it.
+        </p>
+      </div>
+    </div>
+    <div class="p-5 flex items-start gap-4">
+      <div class="w-2 h-2 bg-violet-500 rounded-full mt-2 shrink-0"></div>
+      <div>
+        <h3 class="text-gray-900 font-medium mb-1">
+          It was my first time managing my own server.
+        </h3>
+        <p class="text-gray-500 text-sm leading-relaxed">
+          Someone started hammering SSH on port 22 (the default) until the
+          box ran out of memory and went down. I learned quickly that the
+          defaults aren't safe. Moved SSH off port 22 (they always try
+          that one first), set up an SSH key so I could log in without a
+          password, and disabled password authentication entirely. The
+          attacks didn't stop, they just stopped mattering.
         </p>
       </div>
     </div>

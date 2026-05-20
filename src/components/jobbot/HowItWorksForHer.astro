@@ -1,8 +1,8 @@
 <!-- How It Works For Her -->
 <section class="mb-20">
-  <div class="flex items-center gap-3 mb-8">
+  <div class="flex items-start gap-3 mb-8">
     <div
-      class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center"
+      class="w-10 h-10 bg-violet-100 rounded-xl flex items-center justify-center shrink-0"
     >
       <svg
         class="w-5 h-5 text-violet-600"
@@ -18,7 +18,12 @@
         ></path>
       </svg>
     </div>
-    <h2 class="text-2xl font-bold text-gray-900">How It Works For Her</h2>
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900">How It Works For Her</h2>
+      <p class="text-sm text-gray-500 italic mt-1">
+        Designed around her, not the code.
+      </p>
+    </div>
   </div>
 
   <div class="grid md:grid-cols-2 gap-4">
@@ -106,7 +111,7 @@
       class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
     >
       <p class="text-violet-600 text-sm font-medium mb-2">
-        What if the accept fails and she doesn't know why?
+        When the bot breaks, who gets the alert?
       </p>
       <div class="flex items-start gap-2">
         <svg
@@ -122,60 +127,10 @@
             d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
         </svg>
         <p class="text-gray-600 text-sm">
-          Check for specific error messages like "job no longer available"
-          and tell her the actual reason, not just "it failed."
-        </p>
-      </div>
-    </div>
-
-    <div
-      class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-    >
-      <p class="text-violet-600 text-sm font-medium mb-2">
-        What if the site changes and breaks the bot?
-      </p>
-      <div class="flex items-start gap-2">
-        <svg
-          class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-        <p class="text-gray-600 text-sm">
-          Save the page HTML and a screenshot when things fail so I can
-          see exactly what happened and fix it without bothering her.
-        </p>
-      </div>
-    </div>
-
-    <div
-      class="bg-white rounded-xl p-5 border-l-4 border-l-violet-400 border-y border-r border-gray-200 shadow-sm hover:shadow-md transition-shadow"
-    >
-      <p class="text-violet-600 text-sm font-medium mb-2">
-        What if something fails but might work if we try again?
-      </p>
-      <div class="flex items-start gap-2">
-        <svg
-          class="w-4 h-4 text-gray-400 mt-0.5 shrink-0"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-        <p class="text-gray-600 text-sm">
-          Retry silently on temporary errors. Only notify her when it's
-          actually broken and needs attention.
+          Two notification tiers. I get the engineering errors (timeouts,
+          missing buttons, retry storms). She gets only what she can act on
+          (a job appeared, accept failed, the job's gone). Her phone stays
+          a job-finder, not a debug log.
         </p>
       </div>
     </div>
