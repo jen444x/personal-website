@@ -1,0 +1,34 @@
+---
+import MainLayout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import Hero from "../../components/rocky-concrete/Hero.astro";
+import Story from "../../components/rocky-concrete/Story.astro";
+import Pipeline from "../../components/rocky-concrete/Pipeline.astro";
+import Decisions from "../../components/rocky-concrete/Decisions.astro";
+import Screenshots from "../../components/rocky-concrete/Screenshots.astro";
+import Challenges from "../../components/rocky-concrete/Challenges.astro";
+import Result from "../../components/rocky-concrete/Result.astro";
+---
+
+<MainLayout
+  title="Rocky Concrete"
+  description="A premium-feel website for a Bakersfield concrete and landscaping contractor, with a content pipeline he can run from his phone."
+>
+  <Nav />
+
+  <main class="bg-gray-50 min-h-screen">
+    <Hero />
+
+    <article class="max-w-5xl mx-auto px-6 pb-24">
+      <Story />
+      <Pipeline />
+      <Decisions />
+      <Screenshots />
+      <Challenges />
+      <Result />
+    </article>
+  </main>
+
+  <Footer />
+</MainLayout>

@@ -1,0 +1,67 @@
+---
+const challenges = [
+  {
+    title: "Videos worked everywhere except his phone.",
+    body: "iOS Safari has its own playback rules: no autoplay unless the video is muted and playsinline, metadata loads differently, and the standard event order isn't reliable. I only caught it by testing on his actual phone, not on a desktop browser pretending to be one. The fix was a combination of attributes on the Mux player, custom thumbnail timing so the first frame isn't black, and a fallback path for older iOS versions.",
+    snippet: '<video muted playsinline preload="metadata" ... />',
+  },
+  {
+    title: "A good CMS wasn't a good upload tool.",
+    body: "Sanity has everything I want as a developer (schema control, references, ordering), but for him it was a wall of fields. The dashboard's mental model doesn't match how someone uploads from their phone. I built a simplified upload page on top of Sanity that only exposes the fields he actually needs (image, category, subcategory, caption, notes for me), runs HEIC conversion server-side, and writes documents to Sanity through the API. The CMS is still there when I need power-user moves. He never has to see it.",
+    snippet: "client.create({ _type: 'galleryItem', image, category, ... })",
+  },
+  {
+    title: "Static rebuilds were costing him time and credits.",
+    body: "Prerendered gallery pages meant every new upload triggered a full Netlify rebuild (15 credits each) and didn't show up until the build finished. Wrong incentive for someone who uploads frequently. I converted the gallery category pages to SSR, removed prerender = true, swapped getStaticPaths for runtime category validation, and set s-maxage=1, stale-while-revalidate=2592000. Visitors still get cached pages. He gets near-instant publish.",
+    snippet:
+      "Cache-Control: public, s-maxage=1, stale-while-revalidate=2592000",
+  },
+];
+---
+
+<!-- Challenges -->
+<section class="mb-24">
+  <div class="mb-10">
+    <span
+      class="text-xs font-semibold text-amber-700 tracking-widest uppercase"
+    >
+      05 — What I Had to Solve
+    </span>
+    <h2 class="text-3xl font-bold text-gray-900 mt-2">
+      The bugs and tradeoffs that shaped the final build.
+    </h2>
+  </div>
+
+  <div class="space-y-5">
+    {
+      challenges.map((c, i) => (
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+          <div class="grid md:grid-cols-[auto_1fr] gap-0">
+            <div class="bg-gradient-to-br from-violet-50 to-amber-50/40 p-5 md:p-6 md:border-r border-gray-200 flex md:flex-col items-center md:items-start gap-3 md:gap-2 md:w-32 shrink-0">
+              <div class="text-violet-300 font-bold text-3xl md:text-4xl leading-none">
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div class="text-[10px] font-bold tracking-widest text-violet-600 uppercase">
+                Challenge
+              </div>
+            </div>
+
+            <div class="p-5 md:p-6">
+              <h3 class="text-gray-900 font-semibold text-lg mb-2">
+                {c.title}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                {c.body}
+              </p>
+              <div class="bg-gray-900 rounded-lg p-3 overflow-x-auto">
+                <code class="font-mono text-xs text-amber-200 whitespace-pre">
+                  {c.snippet}
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

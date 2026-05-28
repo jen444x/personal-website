@@ -1,0 +1,80 @@
+---
+const shots = [
+  {
+    label: "Homepage hero",
+    caption: "First impression: premium feel, large hero imagery, restrained color.",
+    aspect: "aspect-[16/10]",
+    span: "md:col-span-2",
+  },
+  {
+    label: "Gallery category page",
+    caption: "Categorized work, revenue-led IA.",
+    aspect: "aspect-[4/3]",
+    span: "",
+  },
+  {
+    label: "Custom upload UI",
+    caption: "What the contractor sees on his phone.",
+    aspect: "aspect-[4/3]",
+    span: "",
+  },
+];
+---
+
+<!-- Screenshots -->
+<section class="mb-24">
+  <div class="mb-10">
+    <span
+      class="text-xs font-semibold text-amber-700 tracking-widest uppercase"
+    >
+      04 — Selected Views
+    </span>
+    <h2 class="text-3xl font-bold text-gray-900 mt-2">
+      A few pieces of the actual site.
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-5">
+    {
+      shots.map((s) => (
+        <figure class:list={["space-y-3", s.span]}>
+          <div
+            class:list={[
+              "relative rounded-2xl overflow-hidden border border-gray-200 bg-gradient-to-br from-gray-100 to-violet-50/50 shadow-sm",
+              s.aspect,
+            ]}
+          >
+            {/* Placeholder until Jen drops in screenshots */}
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+              <svg
+                class="w-10 h-10 mb-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <span class="text-xs uppercase tracking-widest font-semibold">
+                {s.label}
+              </span>
+            </div>
+          </div>
+          <figcaption class="text-sm text-gray-500 leading-relaxed">
+            {s.caption}
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+
+  <p class="text-xs text-gray-400 mt-6 italic">
+    Screenshot placeholders. Drop images into <code
+      class="font-mono bg-gray-100 px-1 rounded">public/rocky-concrete/</code
+    > and swap into this section.
+  </p>
+</section>
