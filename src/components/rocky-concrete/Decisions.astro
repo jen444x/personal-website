@@ -2,27 +2,24 @@
 const decisions = [
   {
     decision:
-      "Built him a custom upload UI on top of Sanity instead of handing him the CMS.",
-    why: "Sanity is great for me (schema control, references, ordering). For a non-tech-savvy primarily Spanish-speaking user who already knew how to upload to Instagram, it was a wall of fields. I exposed only what he needs (image, category, subcategory, caption, notes for me), ran HEIC conversion server-side, and kept the embedded Sanity Studio available for my power-user moves. The CMS works for me. The upload page works for him.",
-    label: "USER-FIRST",
-  },
-  {
-    decision:
       "Converted gallery pages to SSR with a 1s/30d cache instead of triggering rebuilds on every upload.",
-    why: "Prerendered pages meant every photo he posted needed a Netlify build (15 credits each) and didn't show up until the build finished. I swapped getStaticPaths for runtime category validation and set s-maxage=1, stale-while-revalidate=2592000. His edits propagate in ~1 second. Visitors hit warm cache for 30 days. Two SLAs, one cache pattern, no rebuilds.",
+    why: "Prerendered pages meant every photo he posted needed a Netlify build (15 credits each) and didn't show up until the build finished. Wrong incentive for someone who uploads frequently. I swapped getStaticPaths for runtime category validation and set s-maxage=1, stale-while-revalidate=2592000. His edits propagate in ~1 second. Visitors hit warm cache for 30 days. Two SLAs, one cache pattern, no rebuilds.",
     label: "INFRASTRUCTURE",
+    snippet: "Cache-Control: public, s-maxage=1, stale-while-revalidate=2592000",
   },
   {
     decision:
       "Picked Mux for video over native HTML5 once I tested on his actual phone.",
-    why: "iOS Safari has its own playback rules (no autoplay without muted + playsinline, unreliable metadata events, weird first-frame behavior). Native video kept breaking on the device that mattered most: his customers' phones. Mux handles adaptive bitrate, custom thumbnail timing, and the iOS quirks I would've had to patch myself. The fix was cross-browser pain disappearing.",
+    why: "iOS Safari has its own playback rules (no autoplay without muted + playsinline, unreliable metadata events, weird first-frame behavior). I only caught it by testing on his actual phone, not a desktop browser pretending to be one. Native video kept breaking on the device that mattered most: his customers' phones. Mux handles adaptive bitrate, custom thumbnail timing, and the iOS quirks I would've had to patch myself.",
     label: "MEDIA",
+    snippet: '<video muted playsinline preload="metadata" ... />',
   },
   {
     decision:
       "Organized the gallery by revenue, not upload chronology.",
     why: "Most contractor sites dump every photo into one grid sorted by date. That treats every job as equal. His high-revenue product lines (the work he books most often and that pays best) got promoted to their own top-level categories, with subcategories underneath. The gallery is a conversion surface, so the information architecture had to reflect what he's selling, not what he most recently uploaded.",
     label: "PRODUCT",
+    snippet: null,
   },
 ];
 ---
@@ -33,10 +30,10 @@ const decisions = [
     <span
       class="text-xs font-semibold text-amber-700 tracking-widest uppercase"
     >
-      03 — The Decisions
+      06 — Engineering Decisions
     </span>
     <h2 class="text-3xl font-bold text-gray-900 mt-2">
-      Four calls that shaped the build.
+      Three more calls that shaped the build.
     </h2>
   </div>
 
@@ -51,6 +48,13 @@ const decisions = [
             {d.decision}
           </h3>
           <p class="text-gray-600 text-sm leading-relaxed">{d.why}</p>
+          {d.snippet && (
+            <div class="bg-gray-900 rounded-lg p-3 mt-4 overflow-x-auto">
+              <code class="font-mono text-xs text-amber-200 whitespace-pre">
+                {d.snippet}
+              </code>
+            </div>
+          )}
         </div>
       ))
     }

@@ -1,0 +1,158 @@
+---
+const hisFields = ["Photo", "Title", "Category", "Notes for me"];
+const myStudio = [
+  "Orderable documents",
+  "Conditional fields",
+  "Image hotspots",
+  "Full schema control",
+];
+---
+
+<!-- Designing for the Owner -->
+<section class="mb-24">
+  <div class="mb-8">
+    <span
+      class="text-xs font-semibold text-amber-700 tracking-widest uppercase"
+    >
+      05 — Designing for the Owner
+    </span>
+    <h2 class="text-3xl font-bold text-gray-900 mt-2">
+      The hardest user wasn't the customer. It was the owner.
+    </h2>
+  </div>
+
+  <div class="space-y-5 text-gray-600 leading-relaxed text-lg max-w-3xl">
+    <p>
+      Before I wrote a line of schema, I asked him one question: how do you
+      want to add your work? His answer set the whole direction. It had to
+      work like Instagram, and it had to be in Spanish. He wasn't going to
+      learn a dashboard, and he shouldn't have to.
+    </p>
+  </div>
+
+  <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4 max-w-3xl">
+    The upload tool, not the website, was the real problem.
+  </h3>
+  <div class="space-y-5 text-gray-600 leading-relaxed text-lg max-w-3xl">
+    <p>
+      I started on Decap CMS. On paper it was fine. In practice it failed the
+      one device that mattered: it was clunky on mobile, and his phone was the
+      only way he was ever going to post. Worse, it rebuilt the entire site on
+      every single upload, slow for him and burning Netlify build credits. By
+      the time I admitted it wasn't working, I'd already migrated the project
+      from GitHub Pages to Netlify and moved the DNS for it. I scrapped it
+      anyway and moved to Sanity. Sunk cost is still a cost, but shipping the
+      wrong tool is worse.
+    </p>
+    <p>
+      Sanity won on the thing that mattered most to him: the mobile experience.
+      Drag-and-drop, image hotspots, edit-in-place. The closest thing to the
+      Instagram muscle memory he already had.
+    </p>
+  </div>
+
+  <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4 max-w-3xl">
+    Even the right CMS was still too much for him.
+  </h3>
+  <div class="space-y-5 text-gray-600 leading-relaxed text-lg max-w-3xl">
+    <p>
+      On my side, I modeled the content properly: orderable gallery documents
+      so he can drag his work into the order he wants, and conditional fields so
+      the form stays clean. The subcategory dropdown only appears for the
+      categories that actually have them (concrete and landscaping) and shows
+      the right sub-options for each. That part proves I architect content
+      models, not just call an API.
+    </p>
+    <p>
+      But I got Sanity set up for him and it was still too much. Even a clean
+      studio is a developer's mental model, not a contractor's. So I stopped
+      handing him the CMS and built a separate page at <code
+        class="font-mono text-[0.92em] text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded"
+        >/upload</code
+      >, in Spanish, that does one job. It shows him what he needs and nothing
+      else:
+    </p>
+  </div>
+
+  <!-- His page vs my studio -->
+  <div class="my-6 grid md:grid-cols-2 gap-5 max-w-3xl">
+    <div
+      class="rounded-2xl border border-violet-200 bg-gradient-to-br from-violet-50 to-white p-5 shadow-sm"
+    >
+      <p
+        class="text-[10px] font-bold text-violet-700 uppercase tracking-widest mb-3"
+      >
+        What he sees · /upload
+      </p>
+      <ul class="flex flex-wrap gap-2">
+        {
+          hisFields.map((f) => (
+            <li class="text-sm font-medium text-violet-800 bg-white border border-violet-200 rounded-full px-3 py-1">
+              {f}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
+      <p
+        class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3"
+      >
+        What I keep · Sanity Studio
+      </p>
+      <ul class="flex flex-wrap gap-2">
+        {
+          myStudio.map((f) => (
+            <li class="text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-full px-3 py-1">
+              {f}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <p class="text-sm text-gray-400 italic max-w-3xl mb-6">
+    Same data, two interfaces. The form he'll actually use, the studio I need.
+  </p>
+
+  <div class="space-y-5 text-gray-600 leading-relaxed text-lg max-w-3xl">
+    <p>
+      He fills it out like an Instagram post and submits. Behind it, <code
+        class="font-mono text-[0.92em] text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded"
+        >/api/upload</code
+      > pushes the image to Sanity's CDN, creates the <code
+        class="font-mono text-[0.92em] text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded"
+        >galleryItem</code
+      > document, and copies his title into the alt text so the site stays
+      accessible without him ever thinking about it. The full studio is still
+      there for me. He never has to see it.
+    </p>
+  </div>
+
+  <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4 max-w-3xl">
+    The details that made it his.
+  </h3>
+  <div class="space-y-5 text-gray-600 leading-relaxed text-lg max-w-3xl">
+    <p>
+      That notes field is doing more than it looks. It's an async channel
+      between us. He leaves a note ("put this one first," or "this is the
+      Hendersons' backyard"), I see it in Sanity, I handle it. No phone call, no
+      scheduling, no "are you free." The tool absorbed the back-and-forth that
+      used to be a conversation.
+    </p>
+    <p>
+      One real-world snag: he shoots on an iPhone, so every photo lands as HEIC,
+      which browsers won't render. The upload flow converts it to JPEG
+      server-side, so he never knows it was a problem. He just sees his work
+      show up on the site.
+    </p>
+  </div>
+
+  <p
+    class="mt-8 max-w-3xl text-xl font-semibold text-gray-900 leading-snug border-l-4 border-amber-400 pl-5"
+  >
+    The result is the thing I set out to build: he posts his own work, from his
+    phone, in his language, and the site updates itself. He doesn't need me to
+    keep his business online.
+  </p>
+</section>

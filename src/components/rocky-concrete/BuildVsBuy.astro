@@ -1,0 +1,63 @@
+---
+const tradeoffs = [
+  {
+    option: "A website builder (Squarespace, Wix)",
+    gives: "He could edit it himself.",
+    costs: "It would make him look like every other contractor, and I couldn't tune it to the premium feel his work deserved.",
+  },
+  {
+    option: "A custom site from a freelancer",
+    gives: "It would look bespoke.",
+    costs: "He'd be calling that freelancer, and paying, every time he wanted to post a new job.",
+  },
+];
+---
+
+<!-- Why I Built Instead of Bought -->
+<section class="mb-24">
+  <div class="mb-8">
+    <span
+      class="text-xs font-semibold text-amber-700 tracking-widest uppercase"
+    >
+      03 — Why I Built Instead of Bought
+    </span>
+    <h2 class="text-3xl font-bold text-gray-900 mt-2">
+      The off-the-shelf options each made a trade I wasn't willing to make.
+    </h2>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-5 mb-8">
+    {
+      tradeoffs.map((t) => (
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+          <h3 class="text-gray-900 font-semibold text-lg mb-3">{t.option}</h3>
+          <p class="text-sm text-gray-700 mb-2">
+            <span class="font-semibold text-violet-700">Gives him: </span>
+            {t.gives}
+          </p>
+          <p class="text-sm text-gray-700">
+            <span class="font-semibold text-amber-700">Costs him: </span>
+            {t.costs}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="space-y-5 text-gray-600 leading-relaxed text-lg max-w-3xl">
+    <p>
+      Editable but generic, or custom but dependent. I wanted both: the polish
+      of a bespoke build and the autonomy of a tool he could run himself.
+    </p>
+    <p>
+      And the purpose-built tools do exist. I looked at them. CompanyCam will
+      even host a project gallery on your own domain, filterable by type of
+      work. Houzz Pro builds contractor sites outright. I built anyway, because
+      for a brand selling five-figure work a templated gallery undercuts the
+      pitch, and I wanted to own the things that actually mattered here: the
+      design, the performance, and an upload flow shaped around one specific
+      person instead of a generic contractor. Buying would have been faster.
+      Building let me control every decision that follows.
+    </p>
+  </div>
+</section>
