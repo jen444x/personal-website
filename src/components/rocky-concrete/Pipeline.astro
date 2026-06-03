@@ -8,7 +8,7 @@ const photoSteps = [
   },
   {
     label: "Custom Upload",
-    sub: "Simple form, HEIC → JPEG, Spanish-friendly",
+    sub: "Simple form, HEIC→JPEG in-browser, Spanish-friendly",
     color: "violet",
     icon: "upload",
   },
@@ -20,13 +20,13 @@ const photoSteps = [
   },
   {
     label: "SSR + CDN Cache",
-    sub: "s-maxage=1, stale-while-revalidate=2592000",
-    color: "amber",
+    sub: "One config, two SLAs: ~1s for him, 30d for visitors",
+    color: "violet",
     icon: "bolt",
   },
   {
     label: "Visitor's Browser",
-    sub: "Warm cache, ~1s propagation",
+    sub: "Instant load from warm cache",
     color: "gray",
     icon: "globe",
   },
@@ -45,10 +45,10 @@ const photoSteps = [
       A content pipeline from his iPhone to a visitor's browser.
     </h2>
     <p class="text-gray-600 leading-relaxed mt-4 text-lg max-w-3xl">
-      Most of the engineering on this project lives in the gallery. It runs
-      as a pipeline, and I designed each layer around who's actually using
-      it: him on the admin side, his customers on the public side, with a
-      cache and a media branch in between so neither side waits.
+      The gallery has the most moving parts, so I built it as a pipeline and
+      designed each layer around who's using it. He posts from the admin side,
+      his customers browse from the public side, and the cache in the middle
+      does the clever part: it serves both at once, with opposite goals.
     </p>
   </div>
 
@@ -67,7 +67,7 @@ const photoSteps = [
       </div>
 
       <div
-        class="flex flex-col md:flex-row items-stretch md:items-center gap-3"
+        class="flex flex-col md:flex-row items-stretch gap-3"
       >
         {
           photoSteps.map((step, i) => (
@@ -76,7 +76,7 @@ const photoSteps = [
                 class:list={[
                   "flex-1 bg-white rounded-2xl p-4 border shadow-sm",
                   step.color === "violet" && "border-violet-200",
-                  step.color === "amber" && "border-amber-300 bg-amber-50",
+                  step.color === "amber" && "border-amber-300",
                   step.color === "gray" && "border-gray-200",
                 ]}
               >
@@ -147,7 +147,7 @@ const photoSteps = [
                     )}
                     {step.icon === "bolt" && (
                       <svg
-                        class="w-4 h-4 text-amber-700"
+                        class="w-4 h-4 text-violet-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -204,51 +204,6 @@ const photoSteps = [
             </>
           ))
         }
-      </div>
-    </div>
-
-    <!-- Video branch -->
-    <div
-      class="border-t border-dashed border-gray-300 pt-6 mt-6 flex flex-col md:flex-row md:items-center gap-4"
-    >
-      <div class="flex items-center gap-2">
-        <span
-          class="px-2.5 py-1 bg-amber-100 text-amber-800 text-xs font-semibold rounded-full border border-amber-200"
-        >
-          VIDEO BRANCH
-        </span>
-      </div>
-      <div
-        class="flex-1 bg-white rounded-2xl p-4 border border-amber-200 shadow-sm"
-      >
-        <div class="flex items-center gap-2 mb-1">
-          <div
-            class="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center"
-          >
-            <svg
-              class="w-4 h-4 text-amber-700"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-              ></path>
-            </svg>
-          </div>
-          <div class="text-gray-900 font-semibold text-sm">
-            Mux (for video)
-          </div>
-        </div>
-        <div class="text-gray-600 text-sm leading-snug">
-          Adaptive bitrate streaming, custom thumbnail timing, hover-preview
-          GIFs, iOS Safari playback fixes (<code
-            class="font-mono bg-gray-100 px-1 rounded text-xs">playsinline</code
-          >, muted autoplay, metadata fallback).
-        </div>
       </div>
     </div>
   </div>

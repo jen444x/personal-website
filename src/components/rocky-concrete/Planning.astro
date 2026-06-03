@@ -1,0 +1,114 @@
+---
+const discovery = [
+  {
+    q: "How many photos?",
+    a: "About 100",
+    built: "Categories and subcategories, not one giant pile.",
+  },
+  {
+    q: "Where are they?",
+    a: "On my phone",
+    built: "Mobile-first.",
+  },
+  {
+    q: "How often will you add new ones?",
+    a: "After almost every job",
+    built: "Self-serve. He had to be able to post without help from anyone.",
+  },
+  {
+    q: "Comfortable with tech?",
+    a: "Not much, but it's easy to post on Instagram",
+    built: "An upload flow as easy as posting to Instagram.",
+  },
+];
+
+const added = [
+  {
+    title: "Labels in Spanish.",
+    why: "English isn't his first language and he's not great with tech, so every label is in Spanish, telling him exactly what to do.",
+  },
+  {
+    title: "Free to run.",
+    why: "He's a small business owner, so I kept his costs down. Nothing to pay to keep it online.",
+  },
+];
+---
+
+<!-- Planning -->
+<section class="mb-24">
+  <h2 class="text-3xl font-bold text-gray-900 mb-8">Planning</h2>
+
+  <div class="max-w-3xl space-y-5 text-gray-600 leading-relaxed text-lg">
+    <p>
+      This was my first time planning a build for a real client, and I started
+      badly. My first questions were technical, about how I'd build it, and they
+      just confused him and piled up more questions. So I paused and changed
+      direction: I started asking the questions that would actually tell me what
+      to build.
+    </p>
+  </div>
+
+  <ul class="mt-6 max-w-2xl space-y-3">
+    {
+      discovery.map((d) => (
+        <li class="rounded-xl border border-gray-200 bg-white px-4 py-3 shadow-sm">
+          <div class="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
+            <span class="text-sm font-medium text-gray-700 sm:flex-1">
+              {d.q}
+            </span>
+            <svg
+              class="hidden h-3.5 w-3.5 shrink-0 text-violet-400 sm:block"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+            <span class="text-sm font-semibold text-violet-700">{d.a}</span>
+          </div>
+          <div class="mt-2.5 flex items-start gap-2 border-t border-gray-100 pt-2.5">
+            <svg
+              class="mt-0.5 h-4 w-4 shrink-0 text-amber-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 5v7a3 3 0 003 3h11m0 0l-4-4m4 4l-4 4"
+              />
+            </svg>
+            <span class="text-sm font-medium text-amber-700">{d.built}</span>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-8 max-w-3xl">
+    <span
+      class="text-xs font-semibold text-amber-700 tracking-widest uppercase"
+    >
+      What I added
+    </span>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      {
+        added.map((r) => (
+          <div class="rounded-xl border border-amber-200 bg-amber-50 px-5 py-4">
+            <h3 class="mb-1.5 text-sm font-semibold text-amber-900">
+              {r.title}
+            </h3>
+            <p class="text-sm leading-relaxed text-amber-800/80">{r.why}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
