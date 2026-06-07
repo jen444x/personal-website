@@ -3,13 +3,10 @@ import MainLayout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import Hero from "../../components/rocky-concrete/Hero.astro";
-import Story from "../../components/rocky-concrete/Story.astro";
-import Planning from "../../components/rocky-concrete/Planning.astro";
+import Brief from "../../components/rocky-concrete/Brief.astro";
 import BuildVsBuy from "../../components/rocky-concrete/BuildVsBuy.astro";
-import Pipeline from "../../components/rocky-concrete/Pipeline.astro";
-import OwnerExperience from "../../components/rocky-concrete/OwnerExperience.astro";
-import Decisions from "../../components/rocky-concrete/Decisions.astro";
-import Screenshots from "../../components/rocky-concrete/Screenshots.astro";
+import System from "../../components/rocky-concrete/System.astro";
+import UploadPage from "../../components/rocky-concrete/UploadPage.astro";
 import Result from "../../components/rocky-concrete/Result.astro";
 ---
 
@@ -22,14 +19,11 @@ import Result from "../../components/rocky-concrete/Result.astro";
   <main class="bg-gray-50 min-h-screen">
     <Hero />
 
-    <article class="max-w-5xl mx-auto px-6 pb-24">
-      <Story />
-      <Planning />
+    <article class="max-w-5xl mx-auto px-6 pb-24 space-y-24">
+      <Brief />
       <BuildVsBuy />
-      <OwnerExperience />
-      <Pipeline />
-      <Decisions />
-      <Screenshots />
+      <UploadPage />
+      <System />
       <Result />
     </article>
   </main>

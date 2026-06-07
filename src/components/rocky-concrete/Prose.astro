@@ -1,0 +1,17 @@
+---
+// The reading column for body copy: 4xl, centered, with the page's text defaults.
+// Pass `class` for spacing (e.g. mt-8) or overrides.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "max-w-4xl mx-auto space-y-5 text-gray-600 leading-relaxed text-lg",
+    className,
+  ]}
+>
+  <slot />
+</div>

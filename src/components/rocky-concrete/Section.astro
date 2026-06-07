@@ -1,0 +1,14 @@
+---
+// A case-study section: the <section> wrapper plus the one canonical heading.
+// Vertical rhythm between sections lives on the <article> (space-y-24), so
+// this carries no margin of its own.
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<section>
+  <h2 class="max-w-4xl mx-auto text-3xl font-bold text-gray-900 mb-8">{title}</h2>
+  <slot />
+</section>

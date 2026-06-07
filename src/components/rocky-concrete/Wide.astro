@@ -1,0 +1,12 @@
+---
+// The wide breakout (5xl, centered) for figures, diagrams, and card grids
+// that should bleed past the reading column.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class:list={["max-w-5xl mx-auto", className]}>
+  <slot />
+</div>

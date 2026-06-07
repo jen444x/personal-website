@@ -1,0 +1,341 @@
+---
+import { Image } from "astro:assets";
+import galleryCategory from "../../assets/rocky-concrete/gallery-category.png";
+import gallerySubcategories from "../../assets/rocky-concrete/gallery-subcategories.png";
+import galleryLanding from "../../assets/rocky-concrete/gallery-landing.png";
+
+const photoSteps = [
+  {
+    label: "His iPhone",
+    sub: "HEIC photos, on-site",
+    color: "gray",
+    icon: "phone",
+  },
+  {
+    label: "Custom Upload",
+    sub: "Simple form, HEIC→JPEG in-browser, Spanish-friendly",
+    color: "violet",
+    icon: "upload",
+  },
+  {
+    label: "Sanity CMS",
+    sub: "Embedded studio, schemas, references",
+    color: "violet",
+    icon: "cms",
+  },
+  {
+    label: "SSR + CDN Cache",
+    sub: "Stale-while-revalidate, served instantly from the edge",
+    color: "violet",
+    icon: "bolt",
+  },
+  {
+    label: "Visitor's Browser",
+    sub: "Instant load from warm cache",
+    color: "gray",
+    icon: "globe",
+  },
+];
+
+import Section from "./Section.astro";
+import Prose from "./Prose.astro";
+import Column from "./Column.astro";
+import Wide from "./Wide.astro";
+---
+
+<!-- The System: pipeline diagram + performance -->
+<Section title="The System">
+  <Prose class="mb-8">
+    <p>
+      The gallery is the whole pitch. A contractor charging five figures for a
+      patio can't have a site that loads like it was cheap to make, so fast
+      wasn't a nice-to-have, it was the product. The catch is that a gallery is
+      the heaviest kind of page there is: dozens of high-res photos plus video,
+      the slowest stuff to load.
+    </p>
+    <p>
+      It also has the most moving parts, so I built it as a pipeline and
+      designed each layer around who's using it: he posts from the admin side,
+      his customers browse from the public side, and a cache in the middle keeps
+      every visitor's load fast.
+    </p>
+  </Prose>
+
+  <!-- Diagram container -->
+  <Wide
+    class="bg-gradient-to-br from-gray-50 to-violet-50/40 rounded-2xl p-6 md:p-10 border border-gray-200"
+  >
+    <!-- Main flow: photos -->
+    <div class="mb-8">
+      <div class="flex items-center gap-2 mb-4">
+        <span
+          class="px-2.5 py-1 bg-violet-100 text-violet-700 text-xs font-semibold rounded-full border border-violet-200"
+        >
+          PHOTO PATH
+        </span>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-stretch gap-3">
+        {
+          photoSteps.map((step, i) => (
+            <>
+              <div
+                class:list={[
+                  "flex-1 bg-white rounded-2xl p-4 border shadow-sm",
+                  step.color === "violet" && "border-violet-200",
+                  step.color === "amber" && "border-amber-300",
+                  step.color === "gray" && "border-gray-200",
+                ]}
+              >
+                <div class="flex items-center gap-2 mb-1.5">
+                  <div
+                    class:list={[
+                      "w-7 h-7 rounded-lg flex items-center justify-center shrink-0",
+                      step.color === "violet" && "bg-violet-100",
+                      step.color === "amber" && "bg-amber-100",
+                      step.color === "gray" && "bg-gray-100",
+                    ]}
+                  >
+                    {step.icon === "phone" && (
+                      <svg
+                        class:list={[
+                          "w-4 h-4",
+                          step.color === "violet" && "text-violet-600",
+                          step.color === "amber" && "text-amber-700",
+                          step.color === "gray" && "text-gray-600",
+                        ]}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        />
+                      </svg>
+                    )}
+                    {step.icon === "upload" && (
+                      <svg
+                        class:list={[
+                          "w-4 h-4",
+                          step.color === "violet" && "text-violet-600",
+                        ]}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                        />
+                      </svg>
+                    )}
+                    {step.icon === "cms" && (
+                      <svg
+                        class:list={[
+                          "w-4 h-4",
+                          step.color === "violet" && "text-violet-600",
+                        ]}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zm0 4h16M9 4v16"
+                        />
+                      </svg>
+                    )}
+                    {step.icon === "bolt" && (
+                      <svg
+                        class="w-4 h-4 text-violet-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    )}
+                    {step.icon === "globe" && (
+                      <svg
+                        class="w-4 h-4 text-gray-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                  <div class="text-gray-900 font-semibold text-sm">
+                    {step.label}
+                  </div>
+                </div>
+                <div class="text-gray-500 text-xs leading-snug">{step.sub}</div>
+              </div>
+              {i < photoSteps.length - 1 && (
+                <div class="flex items-center justify-center md:px-0 px-0">
+                  <svg
+                    class="w-5 h-5 text-gray-400 rotate-90 md:rotate-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2.5"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              )}
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </Wide>
+
+  <Prose class="mt-8">
+    <p>
+      <strong class="font-semibold text-gray-900"
+        >No rebuild when he posts.</strong
+      >
+      Moving to Sanity took his content off the repo, which was half the rebuild
+      problem. The pages were the other half: while the site was statically generated,
+      every photo he posted meant a production deploy on Netlify, a flat 15 credits
+      each against a 300-credit monthly cap that pauses the site when it runs out.
+      That's about 20 photos a month before the gallery goes dark, on a site he updates
+      after almost every job. So I dropped the static build, replaced <code
+        class="font-mono text-[0.92em] text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded"
+        >getStaticPaths</code
+      > with validation at request time, and moved the pages to server rendering.
+      Now an upload writes straight to the CMS and never triggers a deploy.
+    </p>
+
+    <p>
+      <strong class="font-semibold text-gray-900"
+        >On top of that, a cache keeps server rendering fast.</strong
+      > The pages sit behind a stale-while-revalidate cache (<code
+        class="font-mono text-[0.92em] text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded"
+        >s-maxage=1, stale-while-revalidate=30d</code
+      >), so visitors load instantly from the CDN while new content re-renders
+      in the background and appears a request later.
+    </p>
+
+    <p>
+      <strong class="font-semibold text-gray-900"
+        >The video player never blocks the first load.</strong
+      > Each video sits in the grid as a static thumbnail. The actual Mux player
+      is dynamically imported and built only when someone opens the lightbox, so
+      it's never in the initial bundle slowing down render. The hover preview works
+      the same way: it only starts fetching when the thumbnail is about to enter
+      the viewport, not on page load. Before I did this the page crawled on arrival
+      because everything tried to load at once. Now the heavy stuff loads when it's
+      actually needed.
+    </p>
+
+    <p>
+      <strong class="font-semibold text-gray-900"
+        >Everything else is keeping bytes off the page until they're needed.</strong
+      > Photos come off his phone at full size (~2–5MB each). I serve them through
+      Sanity's image CDN resized to the size they actually display, with <code
+        class="font-mono text-[0.92em] text-violet-700 bg-violet-50 px-1.5 py-0.5 rounded"
+        >auto('format')</code
+      > handing browsers WebP or AVIF, so a multi-megabyte photo lands around 50KB.
+      The first row loads eagerly so something's on screen right away, everything
+      below it is lazy-loaded, and the rest sits behind a "load more" so a visitor
+      isn't downloading a hundred photos to see the first twelve.
+    </p>
+  </Prose>
+
+  <!-- Lighthouse scorecard -->
+  <Column class="mt-8">
+    <p
+      class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3"
+    >
+      Lighthouse
+    </p>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div
+        class="rounded-xl border border-gray-200 bg-white px-4 py-4 text-center shadow-sm"
+      >
+        <div class="text-3xl font-bold text-emerald-600">99</div>
+        <div class="mt-1 text-xs text-gray-500">Performance</div>
+      </div>
+      <div
+        class="rounded-xl border border-gray-200 bg-white px-4 py-4 text-center shadow-sm"
+      >
+        <div class="text-3xl font-bold text-emerald-600">98</div>
+        <div class="mt-1 text-xs text-gray-500">Accessibility</div>
+      </div>
+      <div
+        class="rounded-xl border border-gray-200 bg-white px-4 py-4 text-center shadow-sm"
+      >
+        <div class="text-3xl font-bold text-emerald-600">100</div>
+        <div class="mt-1 text-xs text-gray-500">Best Practices</div>
+      </div>
+      <div
+        class="rounded-xl border border-gray-200 bg-white px-4 py-4 text-center shadow-sm"
+      >
+        <div class="text-3xl font-bold text-emerald-600">100</div>
+        <div class="mt-1 text-xs text-gray-500">SEO</div>
+      </div>
+    </div>
+    <p class="mt-8 text-gray-600 leading-relaxed text-lg">
+      The payoff: A site that feels as premium as the work in it.
+    </p>
+  </Column>
+
+  <!-- What the visitor lands on -->
+  <Wide class="mt-8 grid sm:grid-cols-2 gap-6 items-start">
+    <figure class="sm:col-start-1 sm:row-start-1">
+      <Image
+        src={galleryLanding}
+        alt="The gallery landing on rockyconcreteinc.com: a Browse by Category grid of six service categories, each with a cover photo, above a curated Featured strip."
+        class="w-full rounded-xl border border-gray-200 shadow-sm"
+      />
+      <figcaption class="mt-2 text-sm text-gray-500 leading-relaxed">
+        The landing page for gallery: six categories, each with a cover I set in
+        the Studio, over a curated Featured strip.
+      </figcaption>
+    </figure>
+    <figure class="sm:col-start-1 sm:row-start-2">
+      <Image
+        src={galleryCategory}
+        alt="The Concrete Work category page on rockyconcreteinc.com: a top nav of service categories, with the Walkways & Steps photos showing 6 of 8 before a load-more."
+        class="w-full rounded-xl border border-gray-200 shadow-sm"
+      />
+      <figcaption class="mt-2 text-sm text-gray-500 leading-relaxed">
+        A category page: his services across the top, the work below.
+      </figcaption>
+    </figure>
+    <figure class="sm:col-start-2 sm:row-start-1 sm:row-span-2">
+      <Image
+        src={gallerySubcategories}
+        alt="A category broken into subcategories (Walkways & Steps, Flatwork & Patios, Stone Work), each its own grid of finished jobs with a load-more."
+        class="w-full rounded-xl border border-gray-200 shadow-sm"
+      />
+      <figcaption class="mt-2 text-sm text-gray-500 leading-relaxed">
+        Each category breaks into subcategories, each loading a batch at a time.
+      </figcaption>
+    </figure>
+  </Wide>
+</Section>

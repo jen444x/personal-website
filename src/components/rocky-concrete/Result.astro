@@ -1,17 +1,11 @@
-<!-- Result + Takeaway -->
-<section>
-  <div class="mb-10">
-    <span
-      class="text-xs font-semibold text-amber-700 tracking-widest uppercase"
-    >
-      08 — The Result
-    </span>
-    <h2 class="text-3xl font-bold text-gray-900 mt-2">
-      Live, in his hands, running without me.
-    </h2>
-  </div>
+---
+import Section from "./Section.astro";
+import Wide from "./Wide.astro";
+---
 
-  <div class="grid md:grid-cols-2 gap-5 mb-10">
+<!-- Result + Takeaway -->
+<Section title="Result">
+  <Wide class="grid md:grid-cols-2 gap-5 mb-8">
     <!-- Live link card -->
     <a
       href="https://rockyconcreteinc.com/"
@@ -92,10 +86,10 @@
         tickets.
       </p>
     </div>
-  </div>
+  </Wide>
 
   <!-- Distilled takeaway -->
-  <div
+  <Wide
     class="relative bg-gray-900 rounded-2xl p-8 md:p-10 overflow-hidden"
   >
     <div
@@ -116,14 +110,15 @@
       <p
         class="text-white text-2xl md:text-3xl font-semibold leading-snug max-w-3xl"
       >
-        The right CMS isn't the one with the best features. It's the one
-        whose UI matches the user's existing mental model.
+        The best tool isn't the one with the most features. It's the one
+        that fits the person who has to use it.
       </p>
       <p class="text-gray-400 text-sm mt-4 max-w-2xl leading-relaxed">
-        Sanity has every feature I wanted. He needed Instagram. The
-        difference between those two products was the difference between
-        a tool he'd use and a tool he wouldn't.
+        Sanity had every feature I wanted; he needed something as simple as
+        Instagram. So I built the simple thing on top of the powerful one, and
+        everything underneath, the rendering, the cache, the image pipeline,
+        exists so he never has to think about it.
       </p>
     </div>
-  </div>
-</section>
+  </Wide>
+</Section>

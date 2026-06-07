@@ -4,42 +4,49 @@ const rungs = [
     label: "Off-the-shelf builder",
     sub: "Wix, Squarespace, CompanyCam, Houzz Pro",
     body: "He could edit it himself, but they template the look (the one thing he asked me not to do) and bill monthly, anywhere from $16 to $399. Even the polished ones make him a tenant on someone else's platform.",
+    transition: "So I built custom.",
+    shipped: false,
+  },
+  {
+    label: "A custom static site",
+    sub: "Build it myself",
+    body: "Custom met the look and cost the templates couldn't. But he adds a photo after almost every job, from his phone, for as long as the site is up. On a static site every one of those is a code change I make for him, and the first ~100 would've been hand-built markup. He had to be able to publish without me.",
     transition:
-      "So I built custom. That fixed the look and the cost. Now the real question: how does he add a photo after every job?",
+      "So the site had to be dynamic, with content he could feed himself.",
     shipped: false,
   },
   {
     label: "Hand him the CMS's own studio",
     sub: "A headless CMS as his editor",
-    body: "A headless CMS lets him post without touching code, and runs on a free tier. But its studio is built for a developer, not for a guy posting one-handed on his phone in his second language. And his phone is the only way he was ever going to post. Too clunky to be his.",
+    body: "A headless CMS lets him post without touching code, and runs on a free tier. But its studio is built for a developer, not for a guy posting one-handed on his phone in his second language. Too clunky to be his.",
     transition: "So I built one more layer.",
     shipped: false,
   },
   {
     label: "A Spanish upload page on top",
     sub: "What's live",
-    body: "One screen, a few fields, as easy as posting to Instagram. His own custom look, no monthly subscription, and finally something he'd actually use.",
+    body: "One screen, a few fields, as easy as posting to Instagram. His own custom look, no monthly subscription.",
     transition: null,
     shipped: true,
   },
 ];
+
+import Section from "./Section.astro";
+import Prose from "./Prose.astro";
+import Column from "./Column.astro";
 ---
 
-<!-- Why I Built Instead of Bought -->
-<section class="mb-24">
-  <div class="mb-8">
-    <h2 class="text-3xl font-bold text-gray-900 mt-2">Build vs Buy</h2>
-  </div>
-
-  <div class="max-w-3xl space-y-5 text-gray-600 leading-relaxed text-lg mb-10">
+<Section title="Build vs Buy">
+  <Prose class="mb-8">
     <p>
       He was clear from the start: he wanted a site that felt like his, not a
       template like every other contractor in town. So the look wasn't a
       nice-to-have, it was the brief.
     </p>
-  </div>
+  </Prose>
 
-  <ol class="max-w-3xl">
+  <Column>
+    <ol>
     {
       rungs.map((r) => (
         <li>
@@ -104,11 +111,24 @@ const rungs = [
         </li>
       ))
     }
-  </ol>
+    </ol>
+  </Column>
 
-  <p class="mt-6 max-w-3xl text-lg text-gray-600 leading-relaxed">
-    For a contractor who's comfortable with tech and fine paying monthly, I'd
-    have set him up on Squarespace and saved myself two rungs. He's not that
-    guy, so I climbed them.
-  </p>
-</section>
+  <Prose class="mt-8">
+    <p>
+      Picking the CMS took two tries. I built it on Decap (formerly Netlify CMS)
+      first, then tore it down when its git-based model committed every photo he
+      posted into the repo and kicked off a rebuild. I moved to Sanity, which
+      keeps his content in a hosted dataset, off the repo entirely, so posting a
+      photo isn't a code change anymore.
+    </p>
+  </Prose>
+
+  <Column class="mt-8">
+    <p
+      class="text-xl font-semibold text-gray-900 leading-snug border-l-4 border-violet-400 pl-5"
+    >
+      Sunk cost is still a cost, but shipping the wrong tool is worse.
+    </p>
+  </Column>
+</Section>
