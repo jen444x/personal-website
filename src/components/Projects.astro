@@ -4,16 +4,16 @@ const projects = [
   {
     title: "Job Alert Automation",
     description:
-      "Real-time notification service that monitors job postings and delivers instant alerts for new opportunities. Features intelligent duplicate detection and configurable monitoring intervals. Deployed on Digital Ocean with 24/7 uptime.",
-    tags: ["Python", "Selenium", "BeautifulSoup", "Pushover API"],
+      "A real-time automation bot built for a substitute teacher that monitors a job portal and auto-accepts shifts the moment they post, before they're claimed. Deployed 24/7 on DigitalOcean with self-healing Selenium sessions and two-tier phone alerts.",
+    tags: ["Python", "Selenium", "BeautifulSoup", "Pushover API", "DigitalOcean"],
     github: "https://github.com/jen444x/job-alert-automation",
     detailUrl: "/projects/job-alert-automation",
   },
   {
-    title: "Client Website",
+    title: "Rocky Concrete",
     description:
       "A production site for a Bakersfield concrete contractor, built around a gallery the owner updates himself from his phone, in Spanish. Headless CMS with a custom upload page, SSR behind a stale-while-revalidate cache, and on-device HEIC→JPEG, so it stays fast and he keeps it current without a developer.",
-    tags: ["Astro", "Sanity", "Mux", "Client Work"],
+    tags: ["Astro 5", "Sanity", "Mux", "Tailwind", "Netlify"],
     github: "https://github.com/jen444x/rocky-concrete-website",
     liveUrl: "https://rockyconcreteinc.com/",
     detailUrl: "/projects/rocky-concrete",
@@ -60,84 +60,102 @@ const projects = [
     </p>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
-        projects.map((project) => (
-          <a
-            href={project.detailUrl || undefined}
-            class:list={[
-              "bg-zinc-800 rounded-xl p-6 border border-zinc-700 transition-all duration-300 block group",
-              project.detailUrl
-                ? "cursor-pointer hover:shadow-xl hover:shadow-violet-500/25 hover:border-violet-500/50 hover:-translate-y-1 hover:scale-[1.02]"
-                : "hover:shadow-lg hover:shadow-violet-500/20 hover:border-violet-500/50",
-            ]}
-          >
-            <div class="flex justify-between items-start mb-4">
-              <div class="flex items-center gap-3">
-                <div class="text-violet-400">
-                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 12H5c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v8c0 .55-.45 1-1 1z" />
+        projects.map((project) => {
+          // Whole-card link points to the detail page when there is one,
+          // otherwise to the GitHub repo so every card is clickable.
+          const primaryUrl = project.detailUrl ?? project.github;
+          const primaryExternal = !project.detailUrl;
+          return (
+            <div
+              class:list={[
+                "relative bg-zinc-800 rounded-xl p-6 border border-zinc-700 transition-all duration-300 flex flex-col h-full group",
+                project.detailUrl
+                  ? "hover:shadow-xl hover:shadow-violet-500/25 hover:border-violet-500/50 hover:-translate-y-1 hover:scale-[1.02]"
+                  : "hover:shadow-lg hover:shadow-violet-500/20 hover:border-violet-500/50",
+              ]}
+            >
+              <div class="flex justify-between items-start mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="text-violet-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 12H5c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v8c0 .55-.45 1-1 1z" />
+                    </svg>
+                  </div>
+                  <h3 class="text-lg font-bold text-white group-hover:text-violet-400 transition-colors">
+                    <a
+                      href={primaryUrl}
+                      target={primaryExternal ? "_blank" : undefined}
+                      rel={primaryExternal ? "noopener noreferrer" : undefined}
+                      class="rounded after:absolute after:inset-0 after:rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400"
+                    >
+                      {project.title}
+                    </a>
+                  </h3>
+                </div>
+                <div class="relative z-10 flex gap-3">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.title} on GitHub`}
+                    class="text-gray-400 hover:text-violet-400 transition-colors"
+                  >
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" />
+                    </svg>
+                  </a>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} live site`}
+                      class="text-gray-400 hover:text-violet-400 transition-colors"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z" />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              </div>
+              <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+                {project.description}
+              </p>
+
+              <div class="flex flex-wrap gap-2 mt-auto">
+                {project.tags.map((tag) => (
+                  <span class="px-3 py-1 bg-zinc-900 text-gray-400 rounded-full text-xs font-medium border border-zinc-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {project.detailUrl && (
+                <div class="mt-4 flex items-center gap-2 text-violet-400 font-medium text-sm group-hover:gap-3 transition-all">
+                  View Project
+                  <svg
+                    class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
                 </div>
-                <h3 class="text-lg font-bold text-white group-hover:text-violet-400 transition-colors">
-                  {project.title}
-                </h3>
-              </div>
-              <div class="flex gap-3">
-                <span
-                  onclick={`event.stopPropagation(); window.open('${project.github}', '_blank')`}
-                  class="text-gray-400 hover:text-violet-400 transition-colors cursor-pointer"
-                >
-                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3" />
-                  </svg>
-                </span>
-                {project.liveUrl && (
-                  <span
-                    onclick={`event.stopPropagation(); window.open('${project.liveUrl}', '_blank')`}
-                    class="text-gray-400 hover:text-violet-400 transition-colors cursor-pointer"
-                  >
-                    <svg
-                      class="w-5 h-5"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z" />
-                    </svg>
-                  </span>
-                )}
-              </div>
+              )}
             </div>
-            <p class="text-gray-300 mb-4 text-sm leading-relaxed">
-              {project.description}
-            </p>
-
-            <div class="flex flex-wrap gap-2 mb-4">
-              {project.tags.map((tag) => (
-                <span class="px-3 py-1 bg-zinc-900 text-gray-400 rounded-full text-xs font-medium border border-zinc-700">
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {project.detailUrl && (
-              <div class="flex items-center gap-2 text-violet-400 font-medium text-sm group-hover:gap-3 transition-all">
-                View Project
-                <svg
-                  class="w-4 h-4 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </div>
-            )}
-          </a>
-        ))
+          );
+        })
       }
     </div>
   </div>

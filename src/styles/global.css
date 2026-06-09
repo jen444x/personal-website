@@ -2,6 +2,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Offset anchor jumps so section headings clear the fixed nav */
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -28,4 +30,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
+}
+
+/* Respect users who ask for less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

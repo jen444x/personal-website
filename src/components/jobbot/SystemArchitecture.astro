@@ -25,7 +25,7 @@
     One orchestrator, four single-purpose modules, two external services. The dashed border separates code I wrote from systems I integrated.
   </p>
   <p class="text-xs text-gray-400 mb-5">
-    Hover any module for the deeper trade-offs.
+    Tap or hover any module for the deeper trade-offs.
   </p>
 
   <div
@@ -493,30 +493,70 @@
   const tooltip = document.getElementById("arch-tooltip") as HTMLElement | null;
   const modules = document.querySelectorAll<SVGGElement>(".arch-module");
 
+  // "pinned" = shown by tap/click (touch devices have no hover), so hover
+  // events shouldn't clear it and the next outside-tap dismisses it.
+  let pinned = false;
+
+  function positionAt(clientX: number, clientY: number) {
+    if (!tooltip) return;
+    let x = clientX + 14;
+    let y = clientY + 14;
+    if (x + 240 > window.innerWidth - 8) x = clientX - 254;
+    if (x < 8) x = 8;
+    if (y + tooltip.offsetHeight > window.innerHeight - 8) {
+      y = clientY - tooltip.offsetHeight - 14;
+    }
+    if (y < 8) y = 8;
+    tooltip.style.left = x + "px";
+    tooltip.style.top = y + "px";
+  }
+
+  function showTooltip(key: string, clientX: number, clientY: number) {
+    if (!tooltip) return;
+    tooltip.innerHTML = tooltipContent[key] ?? "";
+    tooltip.style.display = "block";
+    positionAt(clientX, clientY);
+  }
+
+  function hideTooltip() {
+    if (!tooltip) return;
+    tooltip.style.display = "none";
+  }
+
   if (tooltip) {
     modules.forEach((module) => {
       const key = module.dataset.module ?? "";
 
       module.addEventListener("mouseenter", () => {
+        if (pinned) return;
         tooltip.innerHTML = tooltipContent[key] ?? "";
         tooltip.style.display = "block";
       });
 
       module.addEventListener("mouseleave", () => {
-        tooltip.style.display = "none";
+        if (pinned) return;
+        hideTooltip();
+      });
+
+      // Tap/click pins the tooltip near the module (works without a mouse)
+      module.addEventListener("click", (e) => {
+        e.stopPropagation();
+        pinned = true;
+        const rect = module.getBoundingClientRect();
+        showTooltip(key, rect.left + rect.width / 2, rect.top + rect.height / 2);
       });
     });
 
     document.addEventListener("mousemove", (e) => {
-      if (tooltip.style.display === "none") return;
-      let x = e.clientX + 14;
-      let y = e.clientY + 14;
-      if (x + 240 > window.innerWidth - 8) x = e.clientX - 254;
-      if (y + tooltip.offsetHeight > window.innerHeight - 8) {
-        y = e.clientY - tooltip.offsetHeight - 14;
-      }
-      tooltip.style.left = x + "px";
-      tooltip.style.top = y + "px";
+      if (pinned || tooltip.style.display === "none") return;
+      positionAt(e.clientX, e.clientY);
+    });
+
+    // A tap anywhere else dismisses a pinned tooltip
+    document.addEventListener("click", () => {
+      if (!pinned) return;
+      pinned = false;
+      hideTooltip();
     });
   }
 </script>

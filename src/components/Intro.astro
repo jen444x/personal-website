@@ -1,25 +1,168 @@
 ---
 // Hero/Intro Section
+const chips = [
+  "Full-stack",
+  "Backend-focused",
+  "APIs",
+  "Automation",
+  "Client work",
+];
 ---
 
-<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
-  <div class="max-w-4xl mx-auto px-6 py-20 text-center">
-    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
-      Hi, I'm Jen!
-    </h1>
-    <p class="text-xl md:text-2xl text-gray-400 mb-8">
-      I like building things that make life easier.
-    </p>
-    <p class="text-lg text-gray-300 mb-12 max-w-2xl mx-auto">
-      Computer Science graduate interning at FWD Dynamics. I build full-stack applications with a focus on backend development, from web apps and automation tools to machine learning projects. I like taking ideas from concept to deployment.
-    </p>
-    <div class="flex gap-4 justify-center">
-      <a href="#projects" class="px-8 py-3 bg-violet-600 text-white rounded-lg font-semibold hover:bg-violet-500 transition-colors shadow-lg shadow-violet-500/20">
-        View Work
-      </a>
-      <a href="#contact" class="px-8 py-3 border-2 border-violet-500 text-violet-400 rounded-lg font-semibold hover:bg-violet-600 hover:border-violet-600 hover:text-white transition-colors">
-        Get in Touch
-      </a>
+<section
+  class="relative overflow-hidden min-h-screen flex items-center bg-[#070512] pt-20 pb-12"
+>
+  <div class="aura-wall"></div>
+  <div class="aura-halo"></div>
+  <div class="aura-disc"></div>
+
+  <div class="hero-content relative w-full max-w-6xl mx-auto px-6">
+    <div class="max-w-xl md:max-w-2xl text-left">
+      <ul class="flex flex-wrap gap-2 mb-5 list-none p-0">
+        {
+          chips.map((chip) => (
+            <li class="rounded-full border border-violet-400/60 bg-violet-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-violet-100">
+              {chip}
+            </li>
+          ))
+        }
+      </ul>
+      <h1
+        class="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in tracking-tight"
+      >
+        Hi, I'm Jen!
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-200 mb-8">
+        I like to build for people.
+      </p>
+      <p class="text-lg text-gray-200 mb-8 text-balance">
+        I am a Computer Science graduate with end-to-end product ownership
+        experience. I like to understand systems deeply and notice patterns,
+        especially in humans and applications. I like building tools that make
+        people's life easier, whether that means meeting someone's exact needs
+        or making something fast, efficient, and easy to use.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-start">
+        <a
+          href="#projects"
+          class="px-8 py-3 bg-violet-600 text-white rounded-lg font-semibold hover:bg-violet-500 transition-colors shadow-lg shadow-violet-500/20"
+        >
+          View Work
+        </a>
+        <a
+          href="#contact"
+          class="px-8 py-3 border-2 border-violet-400 text-white rounded-lg font-semibold hover:bg-violet-600 hover:border-violet-600 hover:text-white transition-colors"
+        >
+          Get in Touch
+        </a>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* The wall around the disc, softly lit by its spill so the background
+     reads as a lit room, not a black void. Centered on the disc so the
+     light falls off evenly on every side of it. */
+  .aura-wall {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      90% 80% at 72% 50%,
+      rgba(150, 95, 190, 0.16) 0%,
+      rgba(96, 64, 160, 0.08) 44%,
+      rgba(20, 12, 40, 0) 74%
+    );
+    pointer-events: none;
+  }
+
+  /* Soft halo: the disc's glow bleeding onto the wall around it. Sits
+     concentric with the disc so the spill reads as one light source. */
+  .aura-halo {
+    position: absolute;
+    top: 50%;
+    left: 72%;
+    width: min(760px, 92vw);
+    height: min(820px, 90vh);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(224, 120, 198, 0.24) 0%,
+      rgba(158, 84, 220, 0.13) 46%,
+      rgba(110, 60, 200, 0) 72%
+    );
+    filter: blur(70px);
+    mix-blend-mode: screen;
+    pointer-events: none;
+    will-change: filter, transform;
+    animation: aura-breathe 16s ease-in-out infinite alternate;
+  }
+
+  /* The Turrell disc: one soft glowing bloom, fully on-canvas with wall all
+     around it. Single pink->magenta bloom from a bright core, no rainbow of
+     hues. Heavier blur + gradual outer falloff so it dissolves into the wall
+     as diffuse light, not a hard ellipse. Core alpha under 1 so it glows
+     without blowing out the headline. */
+  .aura-disc {
+    position: absolute;
+    top: 50%;
+    left: 72%;
+    width: min(500px, 70vw);
+    height: min(620px, 76vh);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(245, 214, 238, 0.64) 0%,
+      rgba(244, 150, 190, 0.56) 20%,
+      rgba(222, 110, 200, 0.5) 40%,
+      rgba(180, 88, 222, 0.42) 60%,
+      rgba(130, 62, 210, 0.22) 82%,
+      rgba(82, 42, 165, 0) 100%
+    );
+    filter: blur(26px);
+    pointer-events: none;
+    will-change: filter, transform;
+    animation: aura-breathe 16s ease-in-out infinite alternate;
+  }
+
+  /* Text now sits on the dark wall, left of the disc, so it only needs a
+     soft drop for depth, not a hard outline. */
+  .hero-content {
+    text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  @keyframes aura-breathe {
+    from {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
+
+  /* On narrow screens the copy needs the full width, so lift the glow into
+     the upper-right corner and dim it so nothing sits behind the text. */
+  @media (max-width: 767px) {
+    .aura-disc {
+      top: 22%;
+      left: 70%;
+      width: min(300px, 62vw);
+      height: min(380px, 42vh);
+      opacity: 0.8;
+    }
+    .aura-halo {
+      top: 22%;
+      left: 70%;
+      opacity: 0.6;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aura-halo,
+    .aura-disc {
+      animation: none;
+    }
+  }
+</style>
